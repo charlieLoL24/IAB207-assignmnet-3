@@ -34,7 +34,7 @@ class Event(db.Model):
     event_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    Description = db.Column(db.Integer(250), nullable=False)
+    Description = db.Column(db.String(250), nullable=False)
     Image = db.Column(db.String(60), nullable=False, default='default.jpg')
     Start_time = db.Column(db.Time, nullable=False)
     date = db.Column(db.Date, nullable=False)
