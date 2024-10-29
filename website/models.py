@@ -3,21 +3,6 @@ from datetime import datetime
 from flask_login import UserMixin
 import enum
 
-class Categories(enum.Enum):
-    """
-    enum to store category choices
-    """
-    music = "Music"
-    
-class Statuses(enum.Enum):
-    """
-    enum to store status choices
-    """
-    open = "Open"
-    inactive = "Inactive"
-    sold_out = "Sold out"
-    cancelled = "Cancelled"
-
 
 class User(db.Model, UserMixin):
     __tablename__ = "users"
@@ -34,14 +19,14 @@ class Event(db.Model):
     event_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    Description = db.Column(db.Integer(250), nullable=False)
+    Description = db.Column(db.Integer(), nullable=False)
     Image = db.Column(db.String(60), nullable=False, default='default.jpg')
     Start_time = db.Column(db.Time, nullable=False)
     date = db.Column(db.Date, nullable=False)
-    Venue = db.Column(db.String, nullable=False)
-    Category = db.Column(Categories, nullable=False)
+    Venue = db.Column(db.String(32), nullable=False)
+    Category = db.Column(db.String(32), nullable=False)
     Tickets_avaliable = db.Column(db.Integer, nullable=False)
-    status = db.Column(Statuses, nullable=False)
+    status = db.Column(db.String(32), nullable=False)
     
     comments = db.relationship('Comment', backref='event')
 
