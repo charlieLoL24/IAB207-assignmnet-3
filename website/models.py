@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
 
 class Event(db.Model):
     __tablename__ = "events"
+    id = db.Column(db.Integer, primary_key=True)
     event_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
