@@ -1,5 +1,5 @@
-/*=========================History.HTML====================*/
-footer {
+/*========================= History.HTML =====================*/
+.history-page footer {
     background-color: #1f2937;
     color: #fff;
     text-align: center;
@@ -13,36 +13,36 @@ footer {
     box-sizing: border-box;
 }
 
-body, html {
+.history-page body, .history-page html {
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
 
-.header, .footer {
+.history-page .header, .history-page .footer {
     background-color: #6f42c1;
     color: white;
 }
 
-.header {
+.history-page .header {
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.header .navbar-brand {
+.history-page .header .navbar-brand {
     font-size: 1.5rem;
     font-weight: bold;
     color: #ff5733;
 }
 
-.bg-light-header {
+.history-page .bg-light-header {
     background-color: #f8f9fa;
     padding: 30px 0;
     position: relative;
 }
 
-.btn-find-more {
+.history-page .btn-find-more {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -53,26 +53,26 @@ body, html {
     text-decoration: none;
 }
 
-.no-events-message {
+.history-page .no-events-message {
     text-align: center;
     font-size: 1.5rem;
     color: #6c757d;
     margin-top: 50px;
 }
 
-.footer {
+.history-page .footer {
     padding: 15px;
     text-align: center;
 }
-/*==============================================*/
-/*====================Create.HTML==========================*/
-body, html {
+
+/*==================== Create.HTML ===========================*/
+.create-page body, .create-page html {
     height: 100%;
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
 
-.header {
+.create-page .header {
     background-color: #6f42c1;
     color: white;
     padding: 20px;
@@ -82,13 +82,13 @@ body, html {
     align-items: center;
 }
 
-.header .logo {
+.create-page .header .logo {
     font-size: 1.5rem;
     font-weight: 600;
     cursor: pointer;
 }
 
-.header .back-home {
+.create-page .header .back-home {
     background-color: #ff5733;
     color: white;
     border: none;
@@ -98,7 +98,7 @@ body, html {
     text-decoration: none;
 }
 
-.form-container {
+.create-page .form-container {
     padding: 40px;
     max-width: 800px;
     margin: auto;
@@ -108,27 +108,27 @@ body, html {
     margin-top: 30px;
 }
 
-.form-group {
+.create-page .form-group {
     margin-bottom: 20px;
 }
 
-.form-group label {
+.create-page .form-group label {
     font-weight: 600;
 }
 
-.form-control {
+.create-page .form-control {
     border-radius: 5px;
 }
 
-.form-group input[type="file"] {
+.create-page .form-group input[type="file"] {
     padding: 5px;
 }
 
-.form-group textarea {
+.create-page .form-group textarea {
     resize: none;
 }
 
-.submit-btn {
+.create-page .submit-btn {
     background-color: #ff5733;
     color: white;
     border: none;
@@ -137,12 +137,9 @@ body, html {
     cursor: pointer;
     font-size: 1.2rem;
 }
-/*=================================*/
-/* ==============================
-   Register Page Styles
-   ============================== */
 
-   body, html {
+/*==================== Register Page Styles =====================*/
+.register-page body, .register-page html {
     font-family: 'Poppins', sans-serif;
     background-color: #f8f9fa;
     margin: 0;
@@ -153,8 +150,7 @@ body, html {
     flex-direction: column;
 }
 
-/* Header banner */
-.header-banner {
+.register-page .header-banner {
     width: 100%;
     background-color: #6f42c1;
     padding: 25px 0;
@@ -168,13 +164,12 @@ body, html {
     z-index: 1;
 }
 
-.header-banner a {
+.register-page .header-banner a {
     color: #ff5733;
     text-decoration: none;
 }
 
-/* Register Container */
-.register-container {
+.register-page .register-container {
     max-width: 500px;
     width: 100%;
     background-color: white;
@@ -185,15 +180,14 @@ body, html {
     margin-top: 100px;
 }
 
-.register-title {
+.register-page .register-title {
     color: #6f42c1;
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 30px;
 }
 
-/* Form Controls */
-.form-control {
+.register-page .form-control {
     border-radius: 25px;
     padding: 15px 20px;
     font-size: 1rem;
@@ -201,8 +195,7 @@ body, html {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Register Button */
-.btn-register {
+.register-page .btn-register {
     background-color: #6f42c1;
     color: white;
     border-radius: 25px;
@@ -213,25 +206,22 @@ body, html {
     margin-top: 10px;
 }
 
-/* Login Link */
-.login-link {
+.register-page .login-link {
     margin-top: 20px;
 }
 
-.login-link a {
+.register-page .login-link a {
     color: #ff5733;
     font-weight: bold;
     text-decoration: none;
 }
 
-.login-link a:hover {
+.register-page .login-link a:hover {
     text-decoration: underline;
 }
-/* ==============================
-   Login Page Styles
-   ============================== */
 
-   body, html {
+/*==================== Login Page Styles =====================*/
+.login-page body, .login-page html {
     font-family: 'Poppins', sans-serif;
     background-color: #f8f9fa;
     display: flex;
@@ -242,8 +232,7 @@ body, html {
     padding-top: 80px;
 }
 
-/* Header banner */
-.header-banner {
+.login-page .header-banner {
     width: 100%;
     background-color: #6f42c1;
     padding: 20px 0;
@@ -257,13 +246,12 @@ body, html {
     z-index: 1;
 }
 
-.header-banner a {
+.login-page .header-banner a {
     color: #ff5733;
     text-decoration: none;
 }
 
-/* Login Container */
-.login-container {
+.login-page .login-container {
     max-width: 400px;
     width: 100%;
     background-color: white;
@@ -274,24 +262,24 @@ body, html {
     margin-top: 30px;
 }
 
-.login-title {
+.login-page .login-title {
     color: #6f42c1;
     font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 20px;
 }
 
-.form-group {
+.login-page .form-group {
     margin-bottom: 1.5rem;
 }
 
-.form-control {
+.login-page .form-control {
     border-radius: 10px;
     padding: 12px 15px;
     font-size: 1rem;
 }
 
-.btn-login {
+.login-page .btn-login {
     background-color: #6f42c1;
     color: white;
     border-radius: 10px;
@@ -301,34 +289,30 @@ body, html {
     margin-top: 10px;
 }
 
-/* Register Link */
-.register-link {
+.login-page .register-link {
     margin-top: 20px;
 }
 
-.register-link a {
+.login-page .register-link a {
     color: #ff5733;
     font-weight: bold;
     text-decoration: none;
 }
 
-.register-link a:hover {
+.login-page .register-link a:hover {
     text-decoration: underline;
 }
-/* ==============================
-   User Profile Page Styles
-   ============================== */
 
-   body, html {
+/*==================== User Profile Page Styles =====================*/
+.profile-page body, .profile-page html {
     font-family: 'Poppins', sans-serif;
     background-color: #f8f9fa;
     height: 100%;
     margin: 0;
-    padding-top: 80px; /* Adjust for header */
+    padding-top: 80px;
 }
 
-/* Header styling */
-.header {
+.profile-page .header {
     background-color: #6f42c1;
     color: white;
     padding: 20px;
@@ -338,15 +322,14 @@ body, html {
     align-items: center;
 }
 
-.header .logo {
+.profile-page .header .logo {
     font-size: 1.5rem;
     font-weight: 600;
     color: #ff5733;
     text-decoration: none;
 }
 
-/* Profile container styling */
-.profile-container {
+.profile-page .profile-container {
     max-width: 400px;
     margin: auto;
     padding: 40px;
@@ -357,18 +340,17 @@ body, html {
     text-align: center;
 }
 
-.profile-header h2 {
+.profile-page .profile-header h2 {
     color: #6f42c1;
     font-weight: 600;
     margin-bottom: 5px;
 }
 
-.profile-header p {
+.profile-page .profile-header p {
     color: #6c757d;
 }
 
-/* Button styling */
-.btn-profile {
+.profile-page .btn-profile {
     background-color: #6f42c1;
     color: white;
     border-radius: 8px;
@@ -381,11 +363,11 @@ body, html {
     display: block;
 }
 
-.btn-profile:hover {
+.profile-page .btn-profile:hover {
     background-color: #5e3b9d;
 }
 
-.btn-logout {
+.profile-page .btn-logout {
     background-color: #dc3545;
     color: white;
     border-radius: 8px;
@@ -398,12 +380,11 @@ body, html {
     margin-top: 20px;
 }
 
-.btn-logout:hover {
+.profile-page .btn-logout:hover {
     background-color: #c82333;
 }
 
-/* Footer styling */
-footer {
+.profile-page footer {
     background-color: #6f42c1;
     color: white;
     text-align: center;
@@ -412,82 +393,78 @@ footer {
     width: 100%;
     bottom: 0;
 }
-/* ==============================
-   Event Viewer Page Styles
-   ============================== */
 
-   body {
+/*==================== Event Viewer Page Styles =====================*/
+.event-viewer-page body {
     font-family: 'Poppins', sans-serif;
     background-color: #f8f9fa;
 }
 
-.navbar {
+.event-viewer-page .navbar {
     background-color: #6f42c1;
 }
 
-.navbar-brand {
+.event-viewer-page .navbar-brand {
     color: #ff5733;
     font-weight: bold;
 }
 
-.navbar-brand:hover {
+.event-viewer-page .navbar-brand:hover {
     color: #ff784d;
 }
 
-.container {
+.event-viewer-page .container {
     margin-top: 40px;
 }
 
-.card {
+.event-viewer-page .card {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.event-header {
+.event-viewer-page .event-header {
     color: #6f42c1;
     font-weight: 600;
     text-align: center;
 }
 
-.btn-primary {
+.event-viewer-page .btn-primary {
     background-color: #ff5733;
     border: none;
 }
 
-.btn-primary:hover {
+.event-viewer-page .btn-primary:hover {
     background-color: #ff784d;
 }
 
-.footer {
+.event-viewer-page .footer {
     background-color: #6f42c1;
     color: white;
     padding: 15px;
     text-align: center;
 }
 
-.comments-section {
+.event-viewer-page .comments-section {
     max-height: 300px;
     overflow-y: auto;
 }
 
-.comment {
+.event-viewer-page .comment {
     background-color: #ffffff;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-/* ==============================
-   Home Page Styles
-   ============================== */
 
-   body, html {
+/*==================== Home Page Styles =====================*/
+.home-page body, .home-page html {
     height: 100%;
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
 
-.top-section {
+.home-page .top-section {
     background-image: url('/static/img/banner.jpg');
     background-size: cover;
     background-position: center;
@@ -496,7 +473,7 @@ footer {
     text-align: center;
 }
 
-.header {
+.home-page .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -505,24 +482,24 @@ footer {
     color: rgb(255, 255, 255);
 }
 
-.logo {
+.home-page .logo {
     font-size: 1.5rem;
     font-weight: 600;
 }
 
-.logo a {
+.home-page .logo a {
     color: #ff5733;
     text-decoration: none;
 }
 
-.search-bar {
+.home-page .search-bar {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 20px 0;
 }
 
-.search-bar input {
+.home-page .search-bar input {
     width: 60%;
     padding: 10px;
     border-radius: 50px;
@@ -531,7 +508,7 @@ footer {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.search-bar button {
+.home-page .search-bar button {
     padding: 10px 20px;
     margin-left: 10px;
     border: none;
@@ -541,12 +518,12 @@ footer {
     cursor: pointer;
 }
 
-.banner-content h1 {
+.home-page .banner-content h1 {
     font-size: 3rem;
     font-weight: 700;
 }
 
-.banner-content button {
+.home-page .banner-content button {
     padding: 10px 20px;
     background-color: #ff5733;
     border: none;
@@ -556,14 +533,14 @@ footer {
     margin-top: 20px;
 }
 
-.categories {
+.home-page .categories {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 40px 0;
 }
 
-.category-item {
+.home-page .category-item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -571,7 +548,7 @@ footer {
     text-align: center;
 }
 
-.category-item img {
+.home-page .category-item img {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -579,20 +556,20 @@ footer {
     padding: 10px;
 }
 
-.category-item span {
+.home-page .category-item span {
     margin-top: 10px;
     font-weight: 600;
     color: #6f42c1;
 }
 
-.event-card {
+.home-page .event-card {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
 }
 
-.event-card img {
+.home-page .event-card img {
     width: 100%;
     height: 150px;
     border-top-left-radius: 10px;
@@ -600,12 +577,12 @@ footer {
     object-fit: cover;
 }
 
-.event-card .card-body {
+.home-page .event-card .card-body {
     padding: 15px;
     text-align: center;
 }
 
-.event-status {
+.home-page .event-status {
     font-weight: bold;
     color: white;
     padding: 5px;
@@ -614,26 +591,25 @@ footer {
     display: inline-block;
 }
 
-.status-open {
+.home-page .status-open {
     background-color: #28a745;
 }
 
-.status-sold-out {
+.home-page .status-sold-out {
     background-color: #dc3545;
 }
 
-.status-cancelled {
+.home-page .status-cancelled {
     background-color: #ff5733;
 }
 
-.trending-events {
+.home-page .trending-events {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
-/* Style for Show More */
-.show-more-container .btn-outline-secondary {
+.home-page .show-more-container .btn-outline-secondary {
     background-color: transparent;
     border-color: #ced4da;
     color: #6c757d;
@@ -643,13 +619,12 @@ footer {
     margin-top: 20px;
 }
 
-.show-more-container .btn-outline-secondary:hover {
+.home-page .show-more-container .btn-outline-secondary:hover {
     background-color: #f8f9fa;
     color: #6c757d;
 }
 
-/* Sidebar styling */
-.sidebar {
+.home-page .sidebar {
     height: 100%;
     width: 0;
     position: fixed;
@@ -663,7 +638,7 @@ footer {
     color: white;
 }
 
-.sidebar a {
+.home-page .sidebar a {
     padding: 10px 15px;
     text-decoration: none;
     font-size: 1.2rem;
@@ -672,11 +647,11 @@ footer {
     transition: 0.3s;
 }
 
-.sidebar a:hover {
+.home-page .sidebar a:hover {
     background-color: #ff5733;
 }
 
-.close-btn {
+.home-page .close-btn {
     position: absolute;
     top: 20px;
     right: 25px;
@@ -684,7 +659,7 @@ footer {
     margin-left: 50px;
 }
 
-.menu-icon {
+.home-page .menu-icon {
     font-size: 1.5rem;
     cursor: pointer;
 }
