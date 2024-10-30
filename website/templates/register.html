@@ -4,25 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Cook and Connect Events</title>
+    <title>Register - Cook and Connect Events</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f8f9fa;
+            margin: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            margin: 0;
-            padding-top: 80px;
+            flex-direction: column;
         }
 
+        /* Header banner */
         .header-banner {
             width: 100%;
             background-color: #6f42c1;
-            padding: 20px 0;
+            padding: 25px 0;
             color: white;
             text-align: center;
             font-size: 2rem;
@@ -38,90 +39,97 @@
             text-decoration: none;
         }
 
-        .login-container {
-            max-width: 400px;
+        /* Register */
+        .register-container {
+            max-width: 500px;
             width: 100%;
             background-color: white;
-            padding: 50px 30px;
-            border-radius: 10px;
+            padding: 60px 40px;
+            border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
-            margin-top: 30px;
+            margin-top: 100px;
         }
 
-        .login-title {
+        .register-title {
             color: #6f42c1;
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
+        /* Styling the input boxes */
         .form-control {
-            border-radius: 10px;
-            padding: 12px 15px;
+            border-radius: 25px;
+            padding: 15px 20px;
             font-size: 1rem;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .btn-login {
+        /* Styling the Register button */
+        .btn-register {
             background-color: #6f42c1;
             color: white;
-            border-radius: 10px;
-            padding: 10px 20px;
-            width: 100%;
+            border-radius: 25px;
+            padding: 12px 20px;
+            width: 80%;
             font-weight: bold;
+            font-size: 1.1rem;
             margin-top: 10px;
         }
 
-        .register-link {
+        /* Login styling */
+        .login-link {
             margin-top: 20px;
         }
 
-        .register-link a {
+        .login-link a {
             color: #ff5733;
             font-weight: bold;
             text-decoration: none;
         }
 
-        .register-link a:hover {
+        .login-link a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 
 <body>
+    <!-- Top Banner -->
     <div class="header-banner">
-        <a href="">Cook and Connect Events</a>
+        <a href="index.html">Cook and Connect Events</a>
     </div>
 
-    <div class="login-container">
-        <h2 class="login-title">Login</h2>
-        <form onsubmit="redirectToIndex(event)">
-            <div class="form-group">
+    <!-- Register Form -->
+    <div class="register-container">
+        <h2 class="register-title">Register</h2>
+        <form action="/register" method="POST">
+            <div class="mb-3">
+                <label for="username" class="form-label"></label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Choose a username" required>
+            </div>
+            <div class="mb-3">
                 <label for="email" class="form-label"></label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="password" class="form-label"></label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Create a password" required>
             </div>
-            <button type="submit" class="btn btn-login">Login</button>
-            <div class="register-link">
-                <p>New user? <a href="register.html">Register here</a></p>
+            <div class="mb-3">
+                <label for="confirm-password" class="form-label"></label>
+                <input type="password" class="form-control" id="confirm-password" name="confirm_password" placeholder="Confirm your password" required>
+            </div>
+            <button type="submit" class="btn btn-register">Register</button>
+            <div class="login-link">
+                <p>Already have an account? <a href="user.html">Login here</a></p>
             </div>
         </form>
     </div>
 
-    <script>
-        function redirectToIndex(event) {
-            event.preventDefault();
-            window.location.href = "index.html";
-        }
-    </script>
-
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

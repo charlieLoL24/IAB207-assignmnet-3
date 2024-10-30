@@ -4,57 +4,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Event</title>
+    <title>Create Event - Cook and Connect Events</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="static/style/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .header {
+            background-color: #6f42c1;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .header .back-home {
+            background-color: #ff5733;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .form-container {
+            padding: 40px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: 600;
+        }
+        .form-control {
+            border-radius: 5px;
+        }
+        .form-group input[type="file"] {
+            padding: 5px;
+        }
+        .form-group textarea {
+            resize: none;
+        }
+        .submit-btn {
+            background-color: #ff5733;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Event Viewer</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="create.html">Create an Event</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="history.html">Event History</a>
-                    </li>
-                </ul>
-                <div class="d-flex">
-                    <a href="login.html" class="btn btn-outline-light me-2">Login</a>
-                    <a href="register.html" class="btn btn-outline-light">Register</a>
-                </div>
-            </div>
+    <!-- Header -->
+    <div class="header">
+        <a href="index.html" class="back-home">Return Home</a>
+        <div class="logo">
+            <a href="index.html" style="color: white; text-decoration: none;">Cook and Connect Events</a>
         </div>
-    </nav>
-
-    <div class="bg-light text-center py-5">
-        <h1>Create an Event</h1>
     </div>
 
-    <div class="container my-5 justify-content-center ">
+    <!-- Event Creation -->
+    <div class="form-container">
+        <h2 class="text-center mb-4">Create Event</h2>
         <form action="/submit-event" method="post" enctype="multipart/form-data">
-            <div class="mb-3">
+            <div class="form-group mb-3">
                 <label for="event-image" class="form-label">Event Image</label>
                 <input type="file" class="form-control" id="event-image" name="event-image" accept="image/*" required>
             </div>
 
-            <div class="mb-3">
+            <div class="form-group mb-3">
                 <label for="event-title" class="form-label">Event Title</label>
-                <input type="text" class="form-control" id="event-title" name="event-title"
-                    placeholder="Enter event title" required>
+                <input type="text" class="form-control" id="event-title" name="event-title" placeholder="Enter event title" required>
             </div>
 
-            <div class="mb-3">
+            <div class="form-group mb-3">
                 <label for="event-description" class="form-label">Event Description</label>
-                <textarea class="form-control" id="event-description" name="event-description" rows="4"
-                    placeholder="Enter event description" required></textarea>
+                <textarea class="form-control" id="event-description" name="event-description" rows="4" placeholder="Enter event description" required></textarea>
             </div>
 
             <div class="row mb-3">
@@ -69,33 +114,34 @@
                 </div>
             </div>
 
-            <div class="mb-3">
+            <div class="form-group mb-3">
                 <label for="event-venue" class="form-label">Event Venue</label>
-                <input type="text" class="form-control" id="event-venue" name="event-venue"
-                    placeholder="Enter event venue" required>
+                <input type="text" class="form-control" id="event-venue" name="event-venue" placeholder="Enter event venue" required>
             </div>
 
-            <div class="mb-3">
+            <div class="form-group mb-3">
                 <label for="event-genre" class="form-label">Event Category</label>
                 <select class="form-select" id="event-genre" name="event-genre" required>
-                    <option value="" disabled selected>Select Genre</option>
-                    <option value="pop">Pop</option>
-                    <option value="rock">Rock</option>
-                    <option value="hip-hop">Hip-Hop</option>
-                    <option value="jazz">Jazz</option>
-                    <option value="classical">Classical</option>
-                    <option value="electronic">Electronic</option>
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="workshop">Workshop</option>
+                    <option value="seminar">Seminar</option>
+                    <option value="networking">Networking</option>
+                    <option value="conference">Conference</option>
+                    <option value="festival">Festival</option>
+                    <option value="concert">Concert</option>
+                    <option value="exhibition">Exhibition</option>
+                    <option value="webinar">Webinar</option>
                 </select>
-            </div>
+            </div>            
 
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">Create Event</button>
+                <button type="submit" class="submit-btn">Create Event</button>
             </div>
         </form>
     </div>
 
     <footer class="bg-dark text-white text-center py-3">
-        <p class="mb-0">&copy; Alexandre Maldonado 2024</p>
+        <p class="mb-0">&copy; Cook and Connect 2024</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
