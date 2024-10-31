@@ -13,9 +13,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
 </head>
 
-
-<body>
-    <body class="history-page"></body>
+<body class="history-page">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg header">
         <div class="container-fluid">
@@ -45,15 +43,29 @@
     <div class="bg-light-header text-center">
         <h1>Your Event History</h1>
         <p class="lead">View all the events you've attended or booked in the past.</p>
-        <!-- Find More Button -->
         <a href="index.html" class="btn-find-more">Find More</a>
     </div>
 
-    <!-- Event History -->
+    <!-- Event History Section -->
     <div class="container my-5">
-        <div class="no-events-message">
-            No Past Events
-        </div>
+        {% if user_history %}
+            <div class="row g-4">
+                {% for event in user_history %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card p-3">
+                            <h3 class="card-title">{{ event.Title }}</h3>
+                            <p><strong>Date:</strong> {{ event.Date }}</p>
+                            <p><strong>Location:</strong> {{ event.Venue }}</p>
+                            <p><strong>Status:</strong> {{ event.Status }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-events-message">
+                No Past Events
+            </div>
+        {% endif %}
     </div>
 
     <!-- Footer -->
