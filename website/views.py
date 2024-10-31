@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request
-from .forms import CreateEvent, CreateUser, CreateComment
+from .forms import CreateEvent, CreateUser, CreateComment, LoginForm
 from .models import Event, Comment, User
 
 main_bp = Blueprint('main', __name__)
@@ -52,6 +52,10 @@ def history():
     return render_template('history.html')
 
 
-@main_bp.route('/user')
+@main_bp.route('/user', methods=['GET', 'POST'])
 def user():
-    return render_template('user.html')
+    form = LoginForm()  # Create an instance of LoginForm
+    if form.validate_on_submit():
+        # Handle the form submission here (e.g., check credentials)
+        pass
+    return render_template('user.html', form=form)  # Pass the form instance

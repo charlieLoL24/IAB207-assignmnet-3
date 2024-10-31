@@ -12,23 +12,61 @@ auth_bp = Blueprint('auth', __name__)
 @auth_bp.route('/login', methods=['GET', 'POST'])
 # view function
 def login():
-    login_form = LoginForm()
-    error = None
-    if login_form.validate_on_submit():
-        user_name = login_form.user_name.data
-        password = login_form.password.data
-        user = db.session.scalar(db.select(User).where(User.name==user_name))
-        if user is None:
-            error = 'Incorrect user name'
-        elif not check_password_hash(user.password_hash, password): # takes the hash and cleartext password
-            error = 'Incorrect password'
-        if error is None:
-            login_user(user)
-            nextp = request.args.get('next') # this gives the url from where the login page was accessed
-            print(nextp)
-            if next is None or not nextp.startswith('/'):
-                return redirect(url_for('index'))
-            return redirect(nextp)
-        else:
-            flash(error)
-    return render_template('user.html', form=login_form, heading='Login')
+  login_form = LoginForm()
+  error=None
+  if(login_form.validate_on_submit()):
+    user_name = login_form.username.data
+    password = login_form.password.data
+    u1 = User.query.filter_by(name=user_name).first()
+    
+        #if there is no user with that name
+    if u1 is None:
+      error='Incorrect user name'
+    #check the password - notice password hash function
+    elif not check_password_hash(u1.password_hash, password): # takes the hash and password
+      error='Incorrect password'
+    if error is None:
+    #all good, set the login_user
+      login_user(u1)
+      return redirect(url_for('/'))
+    else:
+      print(error)
+      flash(error)
+    #it comes here when it is a get method
+  return render_template('user.html', form=login_form, heading='Login')
+
+@auth_bp.route('/register', methods=['GET', 'POST'])
+def register():
+    register_form = RegisterForm()
+    print(register_form.username.data)
+    if register_form.validate_on_submit():
+        uname = register_form.username.data
+        email = register_form.email.data
+        pwd = register_form.password.data
+        # utype = register_form.usertype.data
+        # Check if username or email already exists
+        existing_user = User.query.filter_by(name=uname).first()
+        if existing_user:
+            flash("Username already taken", "error")
+            return render_template('register.html', form=register_form, heading='Register')
+
+        # Hash the password for security
+        pwd_hash = generate_password_hash(pwd)
+        
+        # Create a new User object and add it to the session
+        new_user = User(name=uname, emailid=email, password_hash=pwd_hash)
+        db.session.add(new_user)
+        db.session.commit()
+        print("added data to database") 
+        flash("Registered user successfully", "success")
+        return redirect(url_for('auth.register'))
+    else:
+        print(register_form.errors)  # Display any validation errors
+
+    # Flash validation errors, if any
+    for field, errors in register_form.errors.items():
+        for error in errors:
+            flash(f"{field}: {error}", "error")
+    
+    return render_template('register.html', form=register_form, heading='Register')
+
