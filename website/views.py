@@ -1,38 +1,14 @@
 from flask import Blueprint, render_template
 from .forms import CreateEvent, CreateUser, CreateComment
+from .models import Event
 
 main_bp = Blueprint('main', __name__)
 
 
 @main_bp.route('/')
 def index():
-    test_events = [
-        {
-            "Title": "Test event 1",
-            "Status": "Active",
-            "Category": "Category 1",
-            "Description": "A really cool event!!"
-        },
-        {
-            "Title": "Test event 2",
-            "Status": "Inactive",
-            "Category": "Category 2",
-            "Description": "An even cooler event!!"
-        },
-        {
-            "Title": "Test event 2",
-            "Status": "Inactive",
-            "Category": "Category 2",
-            "Description": "An even cooler event!!"
-        },
-        {
-            "Title": "Test event 2",
-            "Status": "Inactive",
-            "Category": "Category 2",
-            "Description": "An even cooler event!!"
-        }
-    ]
-    return render_template('index.html', events=test_events)
+    events = Event.query.order_by(Event.id).all()
+    return render_template('index.html', events=events)
 
 
 @main_bp.route('/create-event')
