@@ -38,8 +38,8 @@ class Comment(db.Model):
     date_posted = db.Column(db.Date, nullable=False)
 
 
-    eventid = db.Column(db.Integer, db.ForeignKey('events.id'))
-    userid = db.Column(db.Integer, db.ForeignKey('users.id'))
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     
 
 class Order(db.Model):

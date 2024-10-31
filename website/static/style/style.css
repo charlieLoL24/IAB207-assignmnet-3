@@ -148,6 +148,63 @@ html {
     color: #6c757d;
 }
 
+
+.event-viewer-page body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.event-viewer-page .navbar {
+    background-color: #6f42c1;
+}
+
+.event-viewer-page .navbar-brand {
+    color: #ff5733;
+    font-weight: bold;
+}
+
+.event-viewer-page .navbar-brand:hover {
+    color: #ff784d;
+}
+
+.event-viewer-page .container {
+    margin-top: 40px;
+}
+
+.event-viewer-page .card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-viewer-page .event-header {
+    color: #6f42c1;
+    font-weight: 600;
+    text-align: center;
+}
+
+.event-viewer-page .btn-primary {
+    background-color: #ff5733;
+    border: none;
+}
+
+.event-viewer-page .btn-primary:hover {
+    background-color: #ff784d;
+}
+
+.event-viewer-page .comments-section {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.event-viewer-page .comment {
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
 /*========================= History.HTML =====================*/
 
 .history-page .header {
@@ -507,57 +564,3 @@ html {
 }
 
 /*==================== Event Viewer Page Styles =====================*/
-.event-viewer-page body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fa;
-}
-
-.event-viewer-page .navbar {
-    background-color: #6f42c1;
-}
-
-.event-viewer-page .navbar-brand {
-    color: #ff5733;
-    font-weight: bold;
-}
-
-.event-viewer-page .navbar-brand:hover {
-    color: #ff784d;
-}
-
-.event-viewer-page .container {
-    margin-top: 40px;
-}
-
-.event-viewer-page .card {
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.event-viewer-page .event-header {
-    color: #6f42c1;
-    font-weight: 600;
-    text-align: center;
-}
-
-.event-viewer-page .btn-primary {
-    background-color: #ff5733;
-    border: none;
-}
-
-.event-viewer-page .btn-primary:hover {
-    background-color: #ff784d;
-}
-
-.event-viewer-page .comments-section {
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.event-viewer-page .comment {
-    background-color: #ffffff;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}

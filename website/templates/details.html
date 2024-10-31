@@ -1,81 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Viewer - Cook and Connect Events</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
-</head>
-
-<body class="event-viewer-page">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Cook and Connect Events</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="create.html">Create an Event</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="history.html">Event History</a>
-                    </li>
-                </ul>
-                <div class="d-flex">
-                    <a href="login.html" class="btn btn-outline-light me-2">Login</a>
-                    <a href="register.html" class="btn btn-outline-light">Register</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
+{% block content %}
     <!-- Main Content -->
     <div class="container">
         <div class="row g-4">
             <!-- Event Details Card -->
             <div class="col-md-8">
                 <div class="card p-4">
-                    <h1 class="event-header">Event Name</h1>
-                    <img src="static/img/example.png" class="img-fluid rounded mb-3" alt="Event Image">
-                    <p class="mb-3">Event details/description</p>
-                    <p><strong>Artist:</strong> Event artist</p>
-                    <p><strong>Date & Time:</strong> Hosted on date of event at time of event</p>
-                    <p><strong>Location:</strong> Hosted at location of event</p>
-                    <p><strong>Tickets Available:</strong> Number of tickets available</p>
+                    <h1 class="event-header">{{ event.Title }}</h1>
+                    <img href="{{ event.Image }}" class="img-fluid rounded mb-3" alt="Event Image">
+                    <p class="mb-3">{{ event.Description }}</p>
+                    <p><strong>Artist:</strong>{{ event_artist }}</p>
+                    <p><strong>Date & Time:</strong>{{ event.Start_date }}: {{ event.Start_time }}</p>
+                    <p><strong>Location:</strong>{{ event.Venue }}</p>
+                    <p><strong>Tickets Available:</strong>{{ event.Tickets_avaliable }}</p>
                 </div>
-            </div>
-
+            </div>  
             <!-- Booking Section -->
             <div class="col-md-4">
                 <div class="card p-4">
                     <h1 class="event-header">Book Your Tickets</h1>
                     <label for="ticket-quantity" class="form-label">Ticket Quantity:</label>
                     <input type="number" class="form-control mb-3" value="1" id="ticket-quantity">
-                    
-                    <label for="ticket-type" class="form-label">Ticket Type:</label>
-                    <select class="form-select mb-3" id="ticket-type">
-                        <option value="select"> -- Select an option -- </option>
-                        <option value="front-row">Front Row</option>
-                        <option value="main-floor">Main Floor</option>
-                        <option value="mezzanine">Mezzanine / Balcony</option>
-                        <option value="general">General Admission</option>
-                        <option value="rear">Rear Rows</option>
-                    </select>
-                    
-                    <p>Availability: <span id="availability">Select a ticket type</span></p>
                     <a class="btn btn-primary w-100">Book Now</a>
                 </div>
-            </div>
-
+            </div>  
             <!-- Comments Section -->
             <div class="col-12">
                 <div class="card p-4">
@@ -86,26 +35,15 @@
                     </div>
                     <hr>
                     <div class="comments-section">
-                        <div class="comment">
-                            <p><strong>John Doe</strong> <small>- September 10, 2024</small></p>
-                            <p>Great event! Looking forward to more like this in the future.</p>
-                        </div>
-                        <div class="comment">
-                            <p><strong>Jane Smith</strong> <small>- September 9, 2024</small></p>
-                            <p>The venue was amazing, but the sound system could use an upgrade.</p>
-                        </div>
+                        {% for comment in comments %}
+                            {% include "./partials/comment.html" %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>  
 
-    <!-- Footer -->
-    <footer class="footer">
-        &copy; Cook and Connect 2024
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.getElementById("ticket-type").addEventListener("change", function () {
             const availabilityInfo = {
@@ -119,6 +57,5 @@
             document.getElementById("availability").textContent = availabilityInfo[selectedType] || "Select a ticket type";
         });
     </script>
-</body>
 
-</html>
+{% endblock %}

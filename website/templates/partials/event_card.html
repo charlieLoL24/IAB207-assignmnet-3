@@ -5,6 +5,6 @@
         <p class="card-text">{{ event.Status }}</p>
         <p class="card-text">{{ event.Category }}</p>
         <p class="card-text">{{ event.Description }}</p>
-        <a href="details.html" class="btn btn-primary">More details</a>
+        <a href="{{ url_for('main.eventDetails') }}?id={{ event.id }}" class="btn btn-primary">More details</a>
     </div>
 </div>
