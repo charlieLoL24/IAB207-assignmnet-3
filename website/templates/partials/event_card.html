@@ -1,0 +1,10 @@
+<div class="event-card">
+    <img src="{{ url_for('static', filename='img/wine_tasting_night.jpg') }}" alt="Wine Tasting Night">
+    <div class="card-body">
+        <h5 class="card-title">{{ event.Title }}</h5>
+        <p class="card-text">{{ event.Status }}</p>
+        <p class="card-text">{{ event.Category }}</p>
+        <p class="card-text">{{ event.Description }}</p>
+        <a href="details.html" class="btn btn-primary">More details</a>
+    </div>
+</div>

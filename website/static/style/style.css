@@ -1,5 +1,5 @@
-/*========================= History.HTML =====================*/
-.history-page footer {
+/* base */
+footer {
     background-color: #1f2937;
     color: #fff;
     text-align: center;
@@ -12,13 +12,145 @@
     right: 0;
     box-sizing: border-box;
 }
-
-.history-page body, .history-page html {
+html {
+    height: 100%;
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
+.navbar {
+    background-color: #6f42c1;
+}
+.navbar-brand {
+    color: #ff5733;
+    font-weight: bold;
+}
+.navbar-brand:hover {
+    color: #ff784d;
+}
+/* index */
+.top-section {
+    background-image: url('/static/img/banner.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+}
 
-.history-page .header, .history-page .footer {
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.search-bar input {
+    width: 60%;
+    padding: 10px;
+    border-radius: 50px; 
+    border: 1px solid #ced4da;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    background-color: #ff5733;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.banner-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.banner-content button {
+    padding: 10px 20px;
+    background-color: #ff5733;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 15px;
+    text-align: center;
+}
+
+.category-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    padding: 10px;
+}
+
+.category-item span {
+    margin-top: 10px;
+    font-weight: 600;
+    color: #6f42c1;
+}
+
+/* event card */
+.event-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.event-card img {
+    width: 100%;
+    height: 150px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+}
+
+.event-card .card-body {
+    padding: 15px;
+    text-align: center;
+}
+
+.trending-events {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.show-more-container .btn-outline-secondary {
+    background-color: transparent;
+    border-color: #ced4da;
+    color: #6c757d;
+    font-size: 0.9rem;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.show-more-container .btn-outline-secondary:hover {
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+
+/*========================= History.HTML =====================*/
+
+.history-page .header {
     background-color: #6f42c1;
     color: white;
 }
@@ -60,17 +192,7 @@
     margin-top: 50px;
 }
 
-.history-page .footer {
-    padding: 15px;
-    text-align: center;
-}
-
 /*==================== Create.HTML ===========================*/
-.create-page body, .create-page html {
-    height: 100%;
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-}
 
 .create-page .header {
     background-color: #6f42c1;
@@ -384,16 +506,6 @@
     background-color: #c82333;
 }
 
-.profile-page footer {
-    background-color: #6f42c1;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
 /*==================== Event Viewer Page Styles =====================*/
 .event-viewer-page body {
     font-family: 'Poppins', sans-serif;
@@ -437,13 +549,6 @@
     background-color: #ff784d;
 }
 
-.event-viewer-page .footer {
-    background-color: #6f42c1;
-    color: white;
-    padding: 15px;
-    text-align: center;
-}
-
 .event-viewer-page .comments-section {
     max-height: 300px;
     overflow-y: auto;
@@ -455,211 +560,4 @@
     padding: 10px;
     margin-bottom: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/*==================== Home Page Styles =====================*/
-.home-page body, .home-page html {
-    height: 100%;
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-}
-
-.home-page .top-section {
-    background-image: url('/static/img/banner.jpg');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 0px 0;
-    text-align: center;
-}
-
-.home-page .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    background-color: rgba(111, 66, 193, 0.8);
-    color: rgb(255, 255, 255);
-}
-
-.home-page .logo {
-    font-size: 1.5rem;
-    font-weight: 600;
-}
-
-.home-page .logo a {
-    color: #ff5733;
-    text-decoration: none;
-}
-
-.home-page .search-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.home-page .search-bar input {
-    width: 60%;
-    padding: 10px;
-    border-radius: 50px;
-    border: 1px solid #ced4da;
-    outline: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.home-page .search-bar button {
-    padding: 10px 20px;
-    margin-left: 10px;
-    border: none;
-    background-color: #ff5733;
-    color: white;
-    border-radius: 50px;
-    cursor: pointer;
-}
-
-.home-page .banner-content h1 {
-    font-size: 3rem;
-    font-weight: 700;
-}
-
-.home-page .banner-content button {
-    padding: 10px 20px;
-    background-color: #ff5733;
-    border: none;
-    color: white;
-    border-radius: 30px;
-    font-size: 1.2rem;
-    margin-top: 20px;
-}
-
-.home-page .categories {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 0;
-}
-
-.home-page .category-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 15px;
-    text-align: center;
-}
-
-.home-page .category-item img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #f8f9fa;
-    padding: 10px;
-}
-
-.home-page .category-item span {
-    margin-top: 10px;
-    font-weight: 600;
-    color: #6f42c1;
-}
-
-.home-page .event-card {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-}
-
-.home-page .event-card img {
-    width: 100%;
-    height: 150px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    object-fit: cover;
-}
-
-.home-page .event-card .card-body {
-    padding: 15px;
-    text-align: center;
-}
-
-.home-page .event-status {
-    font-weight: bold;
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    display: inline-block;
-}
-
-.home-page .status-open {
-    background-color: #28a745;
-}
-
-.home-page .status-sold-out {
-    background-color: #dc3545;
-}
-
-.home-page .status-cancelled {
-    background-color: #ff5733;
-}
-
-.home-page .trending-events {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.home-page .show-more-container .btn-outline-secondary {
-    background-color: transparent;
-    border-color: #ced4da;
-    color: #6c757d;
-    font-size: 0.9rem;
-    padding: 5px 15px;
-    border-radius: 20px;
-    margin-top: 20px;
-}
-
-.home-page .show-more-container .btn-outline-secondary:hover {
-    background-color: #f8f9fa;
-    color: #6c757d;
-}
-
-.home-page .sidebar {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: #6f42c1;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-    z-index: 2;
-    color: white;
-}
-
-.home-page .sidebar a {
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: white;
-    display: block;
-    transition: 0.3s;
-}
-
-.home-page .sidebar a:hover {
-    background-color: #ff5733;
-}
-
-.home-page .close-btn {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    font-size: 1.5rem;
-    margin-left: 50px;
-}
-
-.home-page .menu-icon {
-    font-size: 1.5rem;
-    cursor: pointer;
 }

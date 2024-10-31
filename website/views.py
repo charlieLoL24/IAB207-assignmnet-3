@@ -6,7 +6,33 @@ main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
 def index():
-    return render_template('index.html')
+    test_events = [
+        {
+            "Title": "Test event 1",
+            "Status": "Active",
+            "Category": "Category 1",
+            "Description": "A really cool event!!"
+        },
+        {
+            "Title": "Test event 2",
+            "Status": "Inactive",
+            "Category": "Category 2",
+            "Description": "An even cooler event!!"
+        },
+        {
+            "Title": "Test event 2",
+            "Status": "Inactive",
+            "Category": "Category 2",
+            "Description": "An even cooler event!!"
+        },
+        {
+            "Title": "Test event 2",
+            "Status": "Inactive",
+            "Category": "Category 2",
+            "Description": "An even cooler event!!"
+        }
+    ]
+    return render_template('index.html', events=test_events)
 
 
 @main_bp.route('/create-event')

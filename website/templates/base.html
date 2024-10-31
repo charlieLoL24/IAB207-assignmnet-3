@@ -18,11 +18,31 @@
     <header>
 
         <!-- Navbar -->
-        <nav>
-            <!-- Your navbar should go here -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{ url_for('main.index') }}">Cook and Connect Events</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.createEvent') }}">Create an Event</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.history') }}">Event History</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <a href="login.html" class="btn btn-outline-light me-2">Login</a>
+                        <a href="register.html" class="btn btn-outline-light">Register</a>
+                        <a href="{{ url_for('main.profile') }}" class="btn btn-outline-light">Profile</a>
+                    </div>
+                </div>
+            </div>
         </nav>
         <!-- Code for using Flask flash -->
-        <div class="container-fluid">
+        <!-- <div class="container-fluid">
             {% with messages = get_flashed_messages() %}
             {% if messages %}
             {% for message in get_flashed_messages() %}
@@ -33,17 +53,20 @@
             {% endfor %}
             {% endif %}
             {% endwith %}
-        </div>
+        </div> -->
         {% block header %}
         {% endblock %}
 
     </header>
+    <!-- padding added to bottom of content to stop footer displaying over content -->
+    <div class="pb-5"> 
+        {% block content %}
+        {% endblock %}
+    </div>
 
-    {% block content %}
-    {% endblock %}
-
-    <footer class="footer">
-        <!-- Your footer should go here -->
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        © 2024
     </footer>
     
     <!-- Bootstrap JS -->
