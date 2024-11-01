@@ -14,6 +14,8 @@ from wtforms.validators import InputRequired, Length, Email, EqualTo
 
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
+from . import CATEGORIES
+
 ALLOWED_FILE = {'png', 'jpg', 'JPG', 'PNG', 'bmp'}
 
     # creates the login information
@@ -57,22 +59,11 @@ class CreateEventForm(FlaskForm):
     )
     event_genre = SelectField(
         "Event Category", 
-        choices=[
-            ('', 'Select Category'),
-            ('workshop', 'Workshop'),
-            ('seminar', 'Seminar'),
-            ('networking', 'Networking'),
-            ('conference', 'Conference'),
-            ('festival', 'Festival'),
-            ('concert', 'Concert'),
-            ('exhibition', 'Exhibition'),
-            ('webinar', 'Webinar')
-        ],
+        choices=[('', 'Select Category')] + CATEGORIES,
         validators=[InputRequired()]
     )
     tickets_available = IntegerField("Tickets Available", validators=[InputRequired()])
-    status = StringField("Status", validators=[InputRequired(), Length(max=32)])
-    
+        
 class CreateComment(FlaskForm):
     """
         A form for creating a comment
