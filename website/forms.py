@@ -33,26 +33,46 @@ class RegisterForm(FlaskForm):
     submit = SubmitField('Register')
 
 
-class CreateEvent(FlaskForm):
-    """
-        A form for creating events
-    """
-    Description = StringField("User Name", validators=[InputRequired()])
-    
-    Image = FileField(
+class CreateEventForm(FlaskForm):
+    event_image = FileField(
         'Event Image',
         validators=[
-            FileRequired(message='Please select a file name'),
-            FileAllowed(ALLOWED_FILE, message='support only png, jpg, bmp')
-            ]
-        )
-
-    Start_time = TimeField("Start Time", validators=[InputRequired()])
-    date = DateField("Event Date", validators=[InputRequired()])
-    Venue = StringField("Venue", validators=[InputRequired()])
-    Category = StringField("User Name", validators=[InputRequired()])
-    Tickets_avaliable = IntegerField("Tickets avaliable", validators=[InputRequired()])
-    status = StringField("User Name", validators=[InputRequired()])
+            FileRequired(message='Please select a file'),
+            FileAllowed(ALLOWED_FILE, message='Only image files are allowed')
+        ]
+    )
+    event_title = StringField(
+        "Event Title", 
+        validators=[InputRequired(), Length(max=255)]
+    )
+    event_description = TextAreaField(
+        "Event Description", 
+        validators=[InputRequired(), Length(max=500)]
+    )
+    event_date = DateField("Event Date", validators=[InputRequired()])
+    event_time = TimeField("Event Time", validators=[InputRequired()])
+    event_venue = StringField(
+        "Event Venue", 
+        validators=[InputRequired(), Length(max=32)]
+    )
+    event_genre = SelectField(
+        "Event Category", 
+        choices=[
+            ('', 'Select Category'),
+            ('workshop', 'Workshop'),
+            ('seminar', 'Seminar'),
+            ('networking', 'Networking'),
+            ('conference', 'Conference'),
+            ('festival', 'Festival'),
+            ('concert', 'Concert'),
+            ('exhibition', 'Exhibition'),
+            ('webinar', 'Webinar')
+        ],
+        validators=[InputRequired()]
+    )
+    tickets_available = IntegerField("Tickets Available", validators=[InputRequired()])
+    status = StringField("Status", validators=[InputRequired(), Length(max=32)])
+    
     
     
 class CreateComment(FlaskForm):
