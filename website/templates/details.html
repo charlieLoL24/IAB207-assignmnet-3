@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block content %}
     <!-- Main Content -->
@@ -26,12 +27,22 @@
                 </div>
             </div>  
             <!-- Comments Section -->
-            <div class="col-12">
+            <div class="col-12 pb-5">
                 <div class="card p-4">
                     <h1 class="event-header">Comments</h1>
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Write your comment here...">
-                        <a class="btn btn-primary mt-2 w-100">Post Comment</a>
+                        <div class="col-md-6 form-group">
+                            {{wtf.quick_form(form)}}
+                        </div>
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                              {% for message in messages %}
+                                  <div class="alert alert-danger">
+                                  {{ message }}
+                                </div>
+                              {% endfor %}
+                            {% endif %}
+                        {% endwith %}
                     </div>
                     <hr>
                     <div class="comments-section">
@@ -42,20 +53,6 @@
                 </div>
             </div>
         </div>
-    </div>  
-
-    <script>
-        document.getElementById("ticket-type").addEventListener("change", function () {
-            const availabilityInfo = {
-                "front-row": "5 tickets left",
-                "main-floor": "12 tickets left",
-                "mezzanine": "20 tickets left",
-                "general": "Unlimited",
-                "rear": "8 tickets left"
-            };
-            const selectedType = this.value;
-            document.getElementById("availability").textContent = availabilityInfo[selectedType] || "Select a ticket type";
-        });
-    </script>
+    </div>
 
 {% endblock %}

@@ -1,7 +1,9 @@
-from flask import Blueprint, render_template, request, redirect, url_for
-from .forms import CreateEvent, CreateUser, CreateComment, LoginForm
+from flask import Blueprint, render_template, request, redirect, url_for, flash
+from .forms import CreateEvent, CreateComment, LoginForm
 from .models import Event, Comment, User
 from flask_login import login_required, current_user
+from datetime import datetime
+from . import db
 
 
 main_bp = Blueprint('main', __name__)
@@ -28,10 +30,38 @@ def createUser():
     return render_template('register.html', form=CreateUser)
 
 
-@main_bp.route('/details')
+@main_bp.route('/details', methods = ['GET', 'POST'])
 def eventDetails():
     event_id = request.args.get('id')
     event = Event.query.filter_by(id=event_id).first()
+    form = CreateComment()
+    user = check_login(current_user)
+    
+    error = ""
+    if(form.validate_on_submit()):
+        comment = form.comment.data
+        user = check_login(current_user)
+        
+        if comment is None:
+            error = "Please enter a comment"
+            
+        if not user:
+            error = "You must login to post comments"
+            
+        if error == "":
+            comment = Comment(
+                comment = comment,
+                date_posted = datetime.now(),
+                event_id = event_id,
+                user_id = user.id
+            )
+            
+            db.session.add(comment)
+            db.session.commit()
+        else:
+            print(error)
+            flash(error)
+        
     # get comment and poster then builds a list with the comment details and user
     comments = Comment.query.filter_by(event_id=event_id).all()
     comment_dicts = []
@@ -44,7 +74,7 @@ def eventDetails():
             }
         )
             
-    return render_template('details.html', event=event, comments=comment_dicts)
+    return render_template('details.html', event=event, comments=comment_dicts, form=form, user=user)
 
 
 @main_bp.route('/profile')

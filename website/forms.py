@@ -56,17 +56,10 @@ class CreateEvent(FlaskForm):
     status = StringField("User Name", validators=[InputRequired()])
     
     
-class CreateUser(FlaskForm):
-    """
-        A form for creating users
-    """
-    name = StringField("Name", validators=[InputRequired()])
-    emailid = StringField("Email", validators=[InputRequired()])
-    password_hash = StringField("Password", validators=[InputRequired()])
-    
-    
 class CreateComment(FlaskForm):
     """
         A form for creating a comment
     """
     comment = StringField("Comment", validators=[InputRequired()])
+    submit = SubmitField("Post")
+

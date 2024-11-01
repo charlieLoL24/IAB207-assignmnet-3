@@ -148,62 +148,33 @@ html {
     color: #6c757d;
 }
 
-
-.event-viewer-page body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fa;
-}
-
-.event-viewer-page .navbar {
-    background-color: #6f42c1;
-}
-
-.event-viewer-page .navbar-brand {
-    color: #ff5733;
-    font-weight: bold;
-}
-
-.event-viewer-page .navbar-brand:hover {
-    color: #ff784d;
-}
-
-.event-viewer-page .container {
+.container {
     margin-top: 40px;
 }
 
-.event-viewer-page .card {
+.card {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.event-viewer-page .event-header {
+.event-header {
     color: #6f42c1;
     font-weight: 600;
     text-align: center;
 }
 
-.event-viewer-page .btn-primary {
-    background-color: #ff5733;
-    border: none;
-}
-
-.event-viewer-page .btn-primary:hover {
-    background-color: #ff784d;
-}
-
-.event-viewer-page .comments-section {
+.comments-section {
     max-height: 300px;
     overflow-y: auto;
 }
 
-.event-viewer-page .comment {
+.comment {
     background-color: #ffffff;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 
 .form-container {
     padding: 40px;
@@ -259,9 +230,11 @@ html {
     max-width: 400px;
     width: 100%;
     background-color: white;
+    padding: 50px 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    margin-top: 30px;
 }
 .login-title {
     color: #6f42c1;
@@ -412,89 +385,6 @@ html {
 }
 
 .register-page .login-link a:hover {
-    text-decoration: underline;
-}
-
-/*==================== Login Page Styles =====================*/
-.login-page body, .login-page html {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-    padding-top: 80px;
-}
-
-.login-page .header-banner {
-    width: 100%;
-    background-color: #6f42c1;
-    padding: 20px 0;
-    color: white;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
-
-.login-page .header-banner a {
-    color: #ff5733;
-    text-decoration: none;
-}
-
-.login-page .login-container {
-    max-width: 400px;
-    width: 100%;
-    background-color: white;
-    padding: 50px 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin-top: 30px;
-}
-
-.login-page .login-title {
-    color: #6f42c1;
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-.login-page .form-group {
-    margin-bottom: 1.5rem;
-}
-
-.login-page .form-control {
-    border-radius: 10px;
-    padding: 12px 15px;
-    font-size: 1rem;
-}
-
-.login-page .btn-login {
-    background-color: #6f42c1;
-    color: white;
-    border-radius: 10px;
-    padding: 10px 20px;
-    width: 100%;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.login-page .register-link {
-    margin-top: 20px;
-}
-
-.login-page .register-link a {
-    color: #ff5733;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.login-page .register-link a:hover {
     text-decoration: underline;
 }
 
