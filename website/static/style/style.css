@@ -56,7 +56,7 @@ html {
     padding: 10px 20px;
     margin-left: 10px;
     border: none;
-    background-color: #ff5733;
+    background-color: #6f42c1;
     color: white;
     border-radius: 50px;
     cursor: pointer;
@@ -69,7 +69,7 @@ html {
 
 .banner-content button {
     padding: 10px 20px;
-    background-color: #ff5733;
+    background-color: #6f42c1;
     border: none;
     color: white;
     border-radius: 30px;
@@ -148,62 +148,33 @@ html {
     color: #6c757d;
 }
 
-
-.event-viewer-page body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fa;
-}
-
-.event-viewer-page .navbar {
-    background-color: #6f42c1;
-}
-
-.event-viewer-page .navbar-brand {
-    color: #ff5733;
-    font-weight: bold;
-}
-
-.event-viewer-page .navbar-brand:hover {
-    color: #ff784d;
-}
-
-.event-viewer-page .container {
+.container {
     margin-top: 40px;
 }
 
-.event-viewer-page .card {
+.card {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.event-viewer-page .event-header {
+.event-header {
     color: #6f42c1;
     font-weight: 600;
     text-align: center;
 }
 
-.event-viewer-page .btn-primary {
-    background-color: #ff5733;
-    border: none;
-}
-
-.event-viewer-page .btn-primary:hover {
-    background-color: #ff784d;
-}
-
-.event-viewer-page .comments-section {
+.comments-section {
     max-height: 300px;
     overflow-y: auto;
 }
 
-.event-viewer-page .comment {
+.comment {
     background-color: #ffffff;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 
 .form-container {
     padding: 40px;
@@ -216,15 +187,12 @@ html {
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
+    width: 100% ;
 }
 
 .form-group label {
     font-weight: 600;
-}
-
-.form-control {
-    border-radius: 5px;
 }
 
 .form-group input[type="file"] {
@@ -259,9 +227,11 @@ html {
     max-width: 400px;
     width: 100%;
     background-color: white;
+    padding: 50px 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    margin-top: 30px;
 }
 .login-title {
     color: #6f42c1;
@@ -270,16 +240,13 @@ html {
     margin-bottom: 20px;
 }
 
-.form-group {
-    margin-bottom: 1.5rem;
-    width: 100% ;
-}
-
 .form-control {
-    border-radius: 10px;
-    padding: 12px 15px;
+    border-radius: 25px;
+    padding: 15px 20px;
     font-size: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 .btn-default {
@@ -290,6 +257,12 @@ html {
     width: 100%;
     font-weight: bold;
     margin-top: 10px;
+    border: 0;
+}
+
+.btn-default:hover {
+    background-color: #f8f9fa;
+    color: #6c757d;
 }
 
 .register-link {
@@ -334,37 +307,8 @@ html {
 }
 
 /*==================== Register Page Styles =====================*/
-.register-page body, .register-page html {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    flex-direction: column;
-}
 
-.register-page .header-banner {
-    width: 100%;
-    background-color: #6f42c1;
-    padding: 25px 0;
-    color: white;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
-
-.register-page .header-banner a {
-    color: #ff5733;
-    text-decoration: none;
-}
-
-.register-page .register-container {
+.register-container {
     max-width: 500px;
     width: 100%;
     background-color: white;
@@ -375,126 +319,24 @@ html {
     margin-top: 100px;
 }
 
-.register-page .register-title {
+.register-title {
     color: #6f42c1;
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 30px;
 }
 
-.register-page .form-control {
-    border-radius: 25px;
-    padding: 15px 20px;
-    font-size: 1rem;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.register-page .btn-register {
-    background-color: #6f42c1;
-    color: white;
-    border-radius: 25px;
-    padding: 12px 20px;
-    width: 80%;
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin-top: 10px;
-}
-
-.register-page .login-link {
+.login-link {
     margin-top: 20px;
 }
 
-.register-page .login-link a {
-    color: #ff5733;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.register-page .login-link a:hover {
-    text-decoration: underline;
-}
-
-/*==================== Login Page Styles =====================*/
-.login-page body, .login-page html {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-    padding-top: 80px;
-}
-
-.login-page .header-banner {
-    width: 100%;
-    background-color: #6f42c1;
-    padding: 20px 0;
-    color: white;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
-
-.login-page .header-banner a {
-    color: #ff5733;
-    text-decoration: none;
-}
-
-.login-page .login-container {
-    max-width: 400px;
-    width: 100%;
-    background-color: white;
-    padding: 50px 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin-top: 30px;
-}
-
-.login-page .login-title {
+.login-link a {
     color: #6f42c1;
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-.login-page .form-group {
-    margin-bottom: 1.5rem;
-}
-
-.login-page .form-control {
-    border-radius: 10px;
-    padding: 12px 15px;
-    font-size: 1rem;
-}
-
-.login-page .btn-login {
-    background-color: #6f42c1;
-    color: white;
-    border-radius: 10px;
-    padding: 10px 20px;
-    width: 100%;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.login-page .register-link {
-    margin-top: 20px;
-}
-
-.login-page .register-link a {
-    color: #ff5733;
     font-weight: bold;
     text-decoration: none;
 }
 
-.login-page .register-link a:hover {
+.login-link a:hover {
     text-decoration: underline;
 }
 

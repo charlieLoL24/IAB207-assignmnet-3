@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="login-page">
+    <div class="login-container">
+        <h2 class="login-title">Order Placed</h2>
+        <div>
+            <p><strong>You're going to: </strong>{{ event.Title }}</p>
+            <p><strong>Date & Time: </strong>{{ event.Start_date }}: {{ event.Start_time }}</p>
+            <p><strong>Location: </strong>{{ event.Venue }}</p>
+            <p><strong>Tickets: </strong>{{ order.tickets }}</p>
+        </div>
+        <div class="register-link">
+            <a href="{{ url_for('main.index') }}">Return home</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

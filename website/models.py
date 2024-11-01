@@ -13,7 +13,8 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String(255), nullable=False)
     # usertype = Column(String(50))
     comments = db.relationship('Comment', backref='user')
-    events = db.relationship('Event', secondary='comments', backref=db.backref('commented_users'))
+    orders = db.relationship('Order', backref='user')
+    events = db.relationship('Event', backref=db.backref('commented_users'))
 
 class Event(db.Model):
     __tablename__ = "events"
@@ -31,6 +32,7 @@ class Event(db.Model):
     Status = db.Column(db.String(32), nullable=False)
     
     comments = db.relationship('Comment', backref='event')
+    orders = db.relationship('Order', backref='event')
 
 class Comment(db.Model):
     __tablename__ = "comments"
@@ -47,3 +49,6 @@ class Order(db.Model):
     __tablename__ = "order"
     id = db.Column(db.Integer, primary_key=True)
     tickets = db.Column(db.Integer, nullable=False)
+    
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))

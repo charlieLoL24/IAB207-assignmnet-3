@@ -182,8 +182,8 @@ create_db()
 #     Image='static.img.'
 # )
 
-# populate_db()
+populate_db()
 
-# create_user()
+create_user()
 
 populate_comments()
