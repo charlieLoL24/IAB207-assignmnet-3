@@ -11,13 +11,14 @@
                     <h1 class="event-header">{{ event.Title }}</h1>
                     <img href="{{ event.Image }}" class="img-fluid rounded mb-3" alt="Event Image">
                     <p class="mb-3">{{ event.Description }}</p>
-                    <p><strong>Artist: </strong>{{ event_artist }}</p>
+                    <p><strong>Artist: </strong>{{ event_creator.name }}</p>
                     <p><strong>Date & Time: </strong>{{ event.Start_date }}: {{ event.Start_time }}</p>
                     <p><strong>Location: </strong>{{ event.Venue }}</p>
                     <p><strong>Tickets Available: </strong>{{ event.Tickets_avaliable }}</p>
                 </div>
             </div>  
             <!-- Booking Section -->
+            {% if status == "Open" %}
             <div class="col-md-4">
                 <div class="card p-4">
                     <h1 class="event-header">Book Your Tickets</h1>
@@ -33,6 +34,22 @@
                     {{wtf.quick_form(order_form)}}
                 </div>
             </div>
+            {% else %}
+            <div class="col-md-4" style="opacity: 0.3;">
+                <div class="card p-4">
+                    <h1 class="event-header">Book Your Tickets</h1>
+                
+                    <div class="alert alert-danger">
+                        <p>This event is {{ status }}</p>
+                    </div>
+
+                    <label class="control-label" for="tickets">Ticket Quantity</label>
+                    <input class="form-control" id="tickets" name="tickets" required="" type="number" value="" disabled>
+                    <input class="btn btn-default" id="submit" name="submit" type="submit" value="Post" disabled>
+                </div>
+            </div>
+
+            {% endif %}
             <!-- Comments Section -->
             <div class="col-12 pb-5">
                 <div class="card p-4">

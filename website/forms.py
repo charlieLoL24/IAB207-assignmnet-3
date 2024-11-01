@@ -73,8 +73,6 @@ class CreateEventForm(FlaskForm):
     tickets_available = IntegerField("Tickets Available", validators=[InputRequired()])
     status = StringField("Status", validators=[InputRequired(), Length(max=32)])
     
-    
-    
 class CreateComment(FlaskForm):
     """
         A form for creating a comment

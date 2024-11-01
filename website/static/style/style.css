@@ -81,7 +81,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 0;
+    padding-bottom: 40px;
 }
 
 .category-item {
@@ -92,18 +92,10 @@ html {
     text-align: center;
 }
 
-.category-item img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #f8f9fa;
-    padding: 10px;
-}
-
 .category-item span {
     margin-top: 10px;
     font-weight: 600;
-    color: #6f42c1;
+    text-decoration: none;
 }
 
 /* event card */
@@ -279,6 +271,20 @@ html {
     text-decoration: underline;
 }
 
+.category-title {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 10px;
+}
+
+.description-text {
+    overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+           line-clamp: 2; 
+   -webkit-box-orient: vertical;
+}
+
 /*========================= History.HTML =====================*/
 
 
@@ -341,32 +347,9 @@ html {
 }
 
 /*==================== User Profile Page Styles =====================*/
-.profile-page body, .profile-page html {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fa;
-    height: 100%;
-    margin: 0;
-    padding-top: 80px;
-}
 
-.profile-page .header {
-    background-color: #6f42c1;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-.profile-page .header .logo {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #ff5733;
-    text-decoration: none;
-}
-
-.profile-page .profile-container {
+.profile-container {
     max-width: 400px;
     margin: auto;
     padding: 40px;
@@ -377,17 +360,17 @@ html {
     text-align: center;
 }
 
-.profile-page .profile-header h2 {
+.profile-header h2 {
     color: #6f42c1;
     font-weight: 600;
     margin-bottom: 5px;
 }
 
-.profile-page .profile-header p {
+.profile-header p {
     color: #6c757d;
 }
 
-.profile-page .btn-profile {
+.btn-profile {
     background-color: #6f42c1;
     color: white;
     border-radius: 8px;
@@ -400,11 +383,11 @@ html {
     display: block;
 }
 
-.profile-page .btn-profile:hover {
+.btn-profile:hover {
     background-color: #5e3b9d;
 }
 
-.profile-page .btn-logout {
+.btn-logout {
     background-color: #dc3545;
     color: white;
     border-radius: 8px;
@@ -417,7 +400,7 @@ html {
     margin-top: 20px;
 }
 
-.profile-page .btn-logout:hover {
+.btn-logout:hover {
     background-color: #c82333;
 }
 

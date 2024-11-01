@@ -46,3 +46,24 @@ def create_app():
     app.config['UPLOAD_FOLDER'] = os.path.join('website', 'static', 'img')
 
     return app
+
+
+CATEGORIES = [
+   "Food Festival",
+   "Workshop",
+   "Cooking Class",
+   "Expo",
+   "Meetup",
+   "Seminar",
+   "Networking",
+   "Conference",
+   "Webinar",
+]
+
+STATUSES = [
+   "Open",
+   "Inactive",
+   "Sold Out",
+   "Cancelled"
+   
+]

@@ -6,7 +6,7 @@
         <!-- Search Bar -->
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Search events">
-            <button id="searchButton">Search</button>
+            <button id="searchButton" onclick="search()">Search</button>
         </div>
 
         <!-- Banner  -->
@@ -20,27 +20,21 @@
 
 {% block content %}
     <!-- Actions -->
+    <h3 class="category-title">Categories</h3>
     <div class="categories">
-        <div class="category-item">
-            <a href="{{ url_for('main.CreateEvent') }}">
-                <i class="fas fa-calendar-plus fa-3x" style="color: #ff5733;"></i>
-                <span>Create Event</span>
+        
+        {% for category in categories %}
+            <div class="category-item">
+            <a class="btn-default" href="{{ url_for('main.index') }}?category={{ category }}&search_keywords={{ search_keywords }}">
+                <span>{{ category }}</span>
             </a>
         </div>
-        <div class="category-item">
-            <a href="{{ url_for('main.profile') }}">
-                <i class="fas fa-user fa-3x" style="color: #6f42c1;"></i>
-                <span>Profile</span>
-            </a>
-        </div>
-        <div class="category-item">
-            <a href="{{ url_for('main.history') }}">
-                <i class="fas fa-ticket-alt fa-3x" style="color: #ff5733;"></i>
-                <span>Bookings</span>
-            </a>
-        </div>
+        {% endfor %}
     </div>
-
+    <div style="justify-content: center; text-align: center;">
+        <a class="btn-default" href="{{ url_for('main.index') }}">Reset selection</a>
+    </div>
+    
     <!-- Events Section -->
     <div class="container mt-5">
         <h2 class="text-left">Top Trending Food Events</h2>
@@ -52,21 +46,16 @@
 
              {% endfor %}
         </div>
-        
-        <!-- Show More Button -->
-        <div class="show-more-container pb-4">
-            <button onclick="showMoreEvents()" class="btn btn-secondary">Show More</button>
-        </div>
     </div>
 
     
 
     <!-- JavaScript to Show More Events -->
     <script>
-        function showMoreEvents() {
-            const hiddenEvents = document.querySelectorAll('.event-card[style="display: none;"]');
-            hiddenEvents.forEach(event => event.style.display = 'block');
-            document.querySelector('.show-more-container').style.display = 'none';
+        function search(){
+            search_keywords = document.getElementById("searchInput").value;
+            
+            window.location.replace("{{ url_for('main.index') }}?category={{ category }}&search_keywords=" + search_keywords);
         }
 
     </script>
