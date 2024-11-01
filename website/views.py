@@ -97,11 +97,6 @@ def CreateEvent():
     return render_template('create.html', form=form)
 
 
-@main_bp.route('/create-user')
-def createUser():
-    return render_template('register.html', form=CreateUser)
-    
-
 # Route to create a new event (only accessible when logged in)
 @main_bp.route('/create-event')
 @login_required
@@ -188,6 +183,15 @@ def history():
             "event": Event.query.filter_by(id=order.event_id).first()
             })
     return render_template('history.html', orders=orders)
+
+@main_bp.route('/eventcr-history')
+@login_required
+def history2():
+    # Query all events created by the current user
+    user_events = Event.query.filter_by(user_id=current_user.id).all()
+    return render_template('eventcr_history.html', events=user_events)
+
+
 
 # Comment partial view route
 @main_bp.route('/comments', methods=['GET', 'POST'])
