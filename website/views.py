@@ -4,15 +4,9 @@ from .models import Event, Comment, User, Order
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from datetime import datetime
-from . import db
+from . import db, CATEGORIES
 import os
 
-from flask import Blueprint, render_template, request, redirect, url_for, flash
-from .forms import CreateEvent, CreateComment, LoginForm, CreateOrder  # Ensure all forms are imported
-from .models import Event, Comment, User, Order
-from flask_login import login_required, current_user
-from datetime import datetime
-from . import db, CATEGORIES
 
 main_bp = Blueprint('main', __name__)
 
@@ -25,6 +19,30 @@ def check_login(current_user):
 def index():
     category = request.args.get("category")
     search_keywords = request.args.get("search_keywords")
+    if category or search_keywords:
+        if category != "None" and search_keywords != "None":
+            events = Event.query.filter(Event.Title.contains(search_keywords)).filter_by(Category=category).order_by(Event.id).all()
+        elif category != "None":
+            events = Event.query.filter_by(Category=category).order_by(Event.id).all()
+        elif search_keywords != "None":
+            events = Event.query.filter(Event.Title.contains(search_keywords)).order_by(Event.id).all()
+        else:
+            events = Event.query.order_by(Event.id).all()
+    else:
+            events = Event.query.order_by(Event.id).all()
+    
+    user = check_login(current_user)
+    
+    for event in events:
+        if event.Start_date.strftime('%Y-%m-%d') < datetime.today().strftime('%Y-%m-%d') and event.Status != "Inactive":
+            new_event = Event.query.filter_by(id=event.id).first()
+            new_event.Status = "Inactive"
+            db.session.add(new_event)
+            
+    db.session.commit()        
+    
+    return render_template('index.html', events=events, user=user, categories=CATEGORIES, category=category, search_keywords=search_keywords)
+
 
 @main_bp.route('/create-event', methods=['GET', 'POST'])
 def CreateEvent():
@@ -82,32 +100,7 @@ def CreateEvent():
 @main_bp.route('/create-user')
 def createUser():
     return render_template('register.html', form=CreateUser)
-
-
-@main_bp.route('/details', methods = ['GET', 'POST'])
-    if category or search_keywords:
-        if category != "None" and search_keywords != "None":
-            events = Event.query.filter(Event.Title.contains(search_keywords)).filter_by(Category=category).order_by(Event.id).all()
-        elif category != "None":
-            events = Event.query.filter_by(Category=category).order_by(Event.id).all()
-        elif search_keywords != "None":
-            events = Event.query.filter(Event.Title.contains(search_keywords)).order_by(Event.id).all()
-        else:
-            events = Event.query.order_by(Event.id).all()
-    else:
-            events = Event.query.order_by(Event.id).all()
     
-    user = check_login(current_user)
-    
-    for event in events:
-        if event.Start_date.strftime('%Y-%m-%d') < datetime.today().strftime('%Y-%m-%d') and event.Status != "Inactive":
-            new_event = Event.query.filter_by(id=event.id).first().Status = "Inactive"
-            db.session.add(new_event)
-            
-    db.session.commit()        
-    
-    
-    return render_template('index.html', events=events, user=user, categories=CATEGORIES, category=category, search_keywords=search_keywords)
 
 # Route to create a new event (only accessible when logged in)
 @main_bp.route('/create-event')
@@ -145,9 +138,9 @@ def eventDetails():
             error = "No tickets selected"
         elif not user:
             error = "You must login to purchase tickets"
-        elif event.Tickets_avaliable <= 0:
+        elif event.Tickets_available <= 0:
             error = "This event is sold out"
-        elif tickets > event.Tickets_avaliable:
+        elif tickets > event.Tickets_available:
             error = "Not enough tickets available to fulfill your request"
 
         if error == "":
@@ -156,8 +149,8 @@ def eventDetails():
                 user_id=user.id,
                 event_id=event_id
             )
-            event.Tickets_avaliable -= tickets
-            if event.Tickets_avaliable <= 0:
+            event.Tickets_available -= tickets
+            if event.Tickets_available <= 0:
                 event.Status = "Sold Out"
             db.session.add(order)
             db.session.commit()

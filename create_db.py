@@ -21,13 +21,13 @@ def populate_db():
     e1 = Event(
         id=1,
         Title="Test event 1",
-        Status="Active",
+        Status="Open",
         Category="Category 1",
         Description="A really cool event!!",
         Start_time= time,
         Start_date= date,
         Venue= 'a fun place',
-        Tickets_avaliable=10,
+        Tickets_available=10,
         Image='static.img.',
         user_id = 1
     )
@@ -35,13 +35,13 @@ def populate_db():
     e2 = Event(
         id=2,
         Title="Test event 2",
-        Status="Active",
+        Status="Open",
         Category="Category 2",
         Description="A really cool event!!",
         Start_time= time,
         Start_date= date,
         Venue= 'a fun place',
-        Tickets_avaliable=10,
+        Tickets_available=10,
         Image='static.img.',
         user_id = 1
     )
@@ -49,13 +49,13 @@ def populate_db():
     e3 = Event(
         id=3,
         Title="Test event 3",
-        Status="Active",
+        Status="Open",
         Category="Category 3",
         Description="A really cool event!!",
         Start_time= time,
         Start_date= date,
         Venue= 'a fun place',
-        Tickets_avaliable=10,
+        Tickets_available=10,
         Image='static.img.',
         user_id = 1
     )
@@ -63,13 +63,13 @@ def populate_db():
     e4 = Event(
         id=4,
         Title="Test event 4",
-        Status="Active",
+        Status="Open",
         Category="Category 4",
         Description="A really cool event!!",
         Start_time= time,
         Start_date= date,
         Venue= 'a fun place',
-        Tickets_avaliable=10,
+        Tickets_available=10,
         Image='static.img.',
         user_id = 1
     )
