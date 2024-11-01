@@ -5,56 +5,85 @@
     <!-- Event Creation -->
     <div class="form-container">
         <h2 class="text-center mb-4">Create Event</h2>
-        <form action="/submit-event" method="post" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+            
             <div class="form-group mb-3">
-                <label for="event-image" class="form-label">Event Image</label>
-                <input type="file" class="form-control" id="event-image" name="event-image" accept="image/*" required>
+                {{ form.event_image.label(class="form-label") }}
+                {{ form.event_image(class="form-control") }}
+                {% for error in form.event_image.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
-
+        
             <div class="form-group mb-3">
-                <label for="event-title" class="form-label">Event Title</label>
-                <input type="text" class="form-control" id="event-title" name="event-title" placeholder="Enter event title" required>
+                {{ form.event_title.label(class="form-label") }}
+                {{ form.event_title(class="form-control", placeholder="Enter event title") }}
+                {% for error in form.event_title.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
-
+        
             <div class="form-group mb-3">
-                <label for="event-description" class="form-label">Event Description</label>
-                <textarea class="form-control" id="event-description" name="event-description" rows="4" placeholder="Enter event description" required></textarea>
+                {{ form.event_description.label(class="form-label") }}
+                {{ form.event_description(class="form-control", rows="4", placeholder="Enter event description") }}
+                {% for error in form.event_description.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
-
+        
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <label for="event-date" class="form-label">Event Date</label>
-                    <input type="date" class="form-control" id="event-date" name="event-date" required>
+                    {{ form.event_date.label(class="form-label") }}
+                    {{ form.event_date(class="form-control") }}
+                    {% for error in form.event_date.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
                 </div>
-
+        
                 <div class="col-md-6">
-                    <label for="event-time" class="form-label">Event Time</label>
-                    <input type="time" class="form-control" id="event-time" name="event-time" required>
+                    {{ form.event_time.label(class="form-label") }}
+                    {{ form.event_time(class="form-control") }}
+                    {% for error in form.event_time.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
                 </div>
             </div>
-
+        
             <div class="form-group mb-3">
-                <label for="event-venue" class="form-label">Event Venue</label>
-                <input type="text" class="form-control" id="event-venue" name="event-venue" placeholder="Enter event venue" required>
+                {{ form.event_venue.label(class="form-label") }}
+                {{ form.event_venue(class="form-control", placeholder="Enter event venue") }}
+                {% for error in form.event_venue.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
-
+        
             <div class="form-group mb-3">
-                <label for="event-genre" class="form-label">Event Category</label>
-                <select class="form-select" id="event-genre" name="event-genre" required>
-                    <option value="" disabled selected>Select Category</option>
-                    <option value="workshop">Workshop</option>
-                    <option value="seminar">Seminar</option>
-                    <option value="networking">Networking</option>
-                    <option value="conference">Conference</option>
-                    <option value="festival">Festival</option>
-                    <option value="concert">Concert</option>
-                    <option value="exhibition">Exhibition</option>
-                    <option value="webinar">Webinar</option>
-                </select>
-            </div>            
-
+                {{ form.event_genre.label(class="form-label") }}
+                {{ form.event_genre(class="form-select") }}
+                {% for error in form.event_genre.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        
+            <div class="form-group mb-3">
+                {{ form.tickets_available.label(class="form-label") }}
+                {{ form.tickets_available(class="form-control", placeholder="Enter number of tickets available") }}
+                {% for error in form.tickets_available.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        
+            <div class="form-group mb-3">
+                {{ form.status.label(class="form-label") }}
+                {{ form.status(class="form-control", placeholder="Enter event status") }}
+                {% for error in form.status.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        
             <div class="text-center">
-                <button type="submit" class="submit-btn">Create Event</button>
+                <button type="submit" class="btn btn-primary">Create Event</button>
             </div>
         </form>
     </div>

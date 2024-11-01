@@ -1,3 +1,12 @@
+from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
+from .forms import CreateComment, LoginForm, CreateOrder, CreateEventForm
+from .models import Event, Comment, User, Order
+from flask_login import login_required, current_user
+from werkzeug.utils import secure_filename
+from datetime import datetime
+from . import db
+import os
+
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from .forms import CreateEvent, CreateComment, LoginForm, CreateOrder  # Ensure all forms are imported
 from .models import Event, Comment, User, Order
@@ -17,6 +26,65 @@ def index():
     category = request.args.get("category")
     search_keywords = request.args.get("search_keywords")
 
+@main_bp.route('/create-event', methods=['GET', 'POST'])
+def CreateEvent():
+    form = CreateEventForm()
+    if form.validate_on_submit():
+        # Process form data
+        title = form.event_title.data
+        description = form.event_description.data
+        start_date = form.event_date.data
+        start_time = form.event_time.data
+        venue = form.event_venue.data
+        category = form.event_genre.data
+        tickets_available = form.tickets_available.data
+        status = form.status.data
+
+        # Handle image upload
+        image_file = form.event_image.data
+        if image_file:
+            filename = secure_filename(image_file.filename)
+            image_path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+            image_file.save(image_path)
+        else:
+            image_path = 'default.jpg'  # Path to a default image if needed
+
+        # Create an Event object
+        new_event = Event(
+            Title=title,
+            Description=description,
+            Image=image_path,
+            Start_date=start_date,
+            Start_time=start_time,
+            Venue=venue,
+            Category=category,
+            Tickets_available=tickets_available,
+            Status=status,
+            user_id=current_user.id  # assuming logged-in user
+        )
+
+        # Add and commit the new event to the database
+        db.session.add(new_event)
+        db.session.commit()
+        
+        flash("Event created successfully!", "success")
+        return redirect(url_for('main.index'))
+
+    # If validation fails, flash errors
+    if form.errors:
+        for field, errors in form.errors.items():
+            for error in errors:
+                flash(f"{field}: {error}", "error")
+
+    return render_template('create.html', form=form)
+
+
+@main_bp.route('/create-user')
+def createUser():
+    return render_template('register.html', form=CreateUser)
+
+
+@main_bp.route('/details', methods = ['GET', 'POST'])
     if category or search_keywords:
         if category != "None" and search_keywords != "None":
             events = Event.query.filter(Event.Title.contains(search_keywords)).filter_by(Category=category).order_by(Event.id).all()
