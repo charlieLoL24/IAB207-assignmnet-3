@@ -50,6 +50,10 @@ CATEGORIES = [
    "Cooking Class",
    "Expo",
    "Meetup"
+   "Seminar"
+   "Networking"
+   "Conference"
+   "Webinar"
 ]
 
 STATUSES = [
@@ -57,4 +61,5 @@ STATUSES = [
    "Inactive",
    "Sold Out",
    "Cancelled"
+   
 ]

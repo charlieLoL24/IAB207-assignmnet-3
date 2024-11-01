@@ -16,12 +16,9 @@ def check_login(current_user):
 def index():
     category = request.args.get("category")
     search_keywords = request.args.get("search_keywords")
-    
-    print(category)
-    print(search_keywords)
+
     if category or search_keywords:
         if category != "None" and search_keywords != "None":
-            print(Event.Title.contains(search_keywords))
             events = Event.query.filter(Event.Title.contains(search_keywords)).filter_by(Category=category).order_by(Event.id).all()
         elif category != "None":
             events = Event.query.filter_by(Category=category).order_by(Event.id).all()
@@ -33,6 +30,14 @@ def index():
             events = Event.query.order_by(Event.id).all()
     
     user = check_login(current_user)
+    
+    for event in events:
+        if event.Start_date.strftime('%Y-%m-%d') < datetime.today().strftime('%Y-%m-%d') and event.Status != "Inactive":
+            new_event = Event.query.filter_by(id=event.id).first().Status = "Inactive"
+            db.session.add(new_event)
+            
+    db.session.commit()        
+    
     
     return render_template('index.html', events=events, user=user, categories=CATEGORIES, category=category, search_keywords=search_keywords)
 
@@ -51,6 +56,7 @@ def eventDetails():
     order_form = CreateOrder()
     comment_form = CreateComment()
     user = check_login(current_user)
+    event_creator = User.query.filter_by(id=event.user_id).first()
         
     if event == None:
         return redirect(url_for('main.notFound'))
@@ -60,8 +66,14 @@ def eventDetails():
     # Handling ticket orders
     if order_form.validate_on_submit() and 'tickets' in request.form:
         tickets = order_form.tickets.data
+        event_id = request.args.get('id')
+        event = Event.query.filter_by(id=event_id).first()
 
-        if tickets is None:
+        if event.Status == "Inactive":
+            error = "This event is inactive"
+        elif event.Status == "Cancelled":
+            error = "This event has expired"
+        elif tickets is None:
             error = "No tickets selected"
         elif not user:
             error = "You must login to purchase tickets"
@@ -77,30 +89,11 @@ def eventDetails():
                 event_id=event_id
             )
             event.Tickets_avaliable -= tickets
+            if event.Tickets_avaliable <= 0:
+                event.Status = "Sold Out"
             db.session.add(order)
             db.session.commit()
             return redirect(url_for('main.orderDetails') + '?id=' + str(order.id))
-        else:
-            flash(error)
-
-    # Handling comments
-    if comment_form.validate_on_submit() and 'comment' in request.form:
-        comment_text = comment_form.comment.data
-
-        if comment_text is None:
-            error = "Please enter a comment"
-        elif not user:
-            error = "You must login to post comments"
-
-        if error == "":
-            comment = Comment(
-                comment=comment_text,
-                date_posted=datetime.now(),
-                event_id=event_id,
-                user_id=user.id
-            )
-            db.session.add(comment)
-            db.session.commit()
         else:
             flash(error)
 
@@ -110,12 +103,12 @@ def eventDetails():
         {
             "poster": User.query.filter_by(id=comment.user_id).first().name,
             "comment": comment.comment,
-            "date_posted": comment.date_posted
+            "date_posted": comment.date_posted,
         }
         for comment in comments
     ]
-
-    return render_template('details.html', event=event, user=user, order_form=order_form, comment_form=comment_form, comments=comment_dicts)
+    print(event.Status)
+    return render_template('details.html', event=event, user=user, order_form=order_form, comment_form=comment_form, comments=comment_dicts, event_creator=event_creator, status=event.Status)
 
 # Profile page, accessible only when logged in, and passes user data to the template
 @main_bp.route('/profile')
