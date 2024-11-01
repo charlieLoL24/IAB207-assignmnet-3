@@ -18,7 +18,7 @@ ALLOWED_FILE = {'png', 'jpg', 'JPG', 'PNG', 'bmp'}
 
     # creates the login information
 class LoginForm(FlaskForm):
-    username=StringField("User Name", validators=[InputRequired('Enter user name')])
+    user_name=StringField("User Name", validators=[InputRequired('Enter user name')])
     password=PasswordField("Password", validators=[InputRequired('Enter user password')])
     submit = SubmitField("Login")
 

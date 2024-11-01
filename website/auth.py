@@ -77,8 +77,5 @@ def logout():
   logout_user()
   return redirect(url_for('main.index'))
 
-@auth_bp.route('/register')
-def register():
-  return "wip"
 
 
