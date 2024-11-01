@@ -308,31 +308,14 @@ html {
 
 /*========================= History.HTML =====================*/
 
-.history-page .header {
-    background-color: #6f42c1;
-    color: white;
-}
 
-.history-page .header {
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.history-page .header .navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ff5733;
-}
-
-.history-page .bg-light-header {
+.bg-light-header {
     background-color: #f8f9fa;
     padding: 30px 0;
     position: relative;
 }
 
-.history-page .btn-find-more {
+.btn-find-more {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -343,7 +326,7 @@ html {
     text-decoration: none;
 }
 
-.history-page .no-events-message {
+.no-events-message {
     text-align: center;
     font-size: 1.5rem;
     color: #6c757d;
