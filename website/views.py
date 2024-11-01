@@ -107,7 +107,6 @@ def eventDetails():
         }
         for comment in comments
     ]
-    print(event.Status)
     return render_template('details.html', event=event, user=user, order_form=order_form, comment_form=comment_form, comments=comment_dicts, event_creator=event_creator, status=event.Status)
 
 # Profile page, accessible only when logged in, and passes user data to the template
@@ -121,7 +120,13 @@ def profile():
 @login_required
 def history():
     user_orders = Order.query.filter_by(user_id=current_user.id).all()
-    return render_template('history.html', user_orders=user_orders)
+    orders = []
+    for order in user_orders:
+        orders.append({
+            "order": order,
+            "event": Event.query.filter_by(id=order.event_id).first()
+            })
+    return render_template('history.html', orders=orders)
 
 # Comment partial view route
 @main_bp.route('/comments', methods=['GET', 'POST'])

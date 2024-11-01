@@ -4,7 +4,7 @@
         <h5 class="card-title">{{ event.Title }}</h5>
         <p class="card-text">{{ event.Status }}</p>
         <p class="card-text">{{ event.Category }}</p>
-        <p class="card-text">{{ event.Description }}</p>
+        <p class="card-text description-text text-break">{{ event.Description }}</p>
         <a href="{{ url_for('main.eventDetails') }}?id={{ event.id }}" class="btn btn-primary">More details</a>
     </div>
 </div>

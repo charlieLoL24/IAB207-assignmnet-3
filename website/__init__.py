@@ -49,11 +49,11 @@ CATEGORIES = [
    "Workshop",
    "Cooking Class",
    "Expo",
-   "Meetup"
-   "Seminar"
-   "Networking"
-   "Conference"
-   "Webinar"
+   "Meetup",
+   "Seminar",
+   "Networking",
+   "Conference",
+   "Webinar",
 ]
 
 STATUSES = [

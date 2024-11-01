@@ -4,21 +4,21 @@
 <div class="container my-5">
     <!-- Page Header -->
     <div class="bg-light-header text-center">
-        <h1>Your Event History</h1>
-        <p class="lead">View all the events you've attended or booked in the past.</p>
-        <a href="{{ url_for('index') }}" class="btn-find-more">Find More</a>
+        <h1>Your booking History</h1>
+        <p class="lead">View all the bookings yiou have made in the past.</p>
+        <a href="{{ url_for('main.index') }}" class="btn-find-more">Find More</a>
     </div>
 
     <!-- Event History Section -->
-    {% if user_history %}
+    {% if orders %}
         <div class="row g-4">
-            {% for event in user_history %}
+            {% for user_order in orders %}
                 <div class="col-md-6 col-lg-4">
                     <div class="card p-3">
-                        <h3 class="card-title">{{ event.Title }}</h3>
-                        <p><strong>Date:</strong> {{ event.Date }}</p>
-                        <p><strong>Location:</strong> {{ event.Venue }}</p>
-                        <p><strong>Status:</strong> {{ event.Status }}</p>
+                        <h3 class="card-title"><strong>order number: </strong>{{ user_order.order.id }}</h3>
+                        <p><strong>Date:</strong> {{ user_order.event.date }}</p>
+                        <p><strong>Location:</strong> {{ user_order.event.Venue }}</p>
+                        <p><strong>Status:</strong> {{ user_order.event.Status }}</p>
                     </div>
                 </div>
             {% endfor %}
