@@ -245,6 +245,67 @@ html {
     font-size: 1.2rem;
 }
 
+.login-page {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    max-width: 400px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.login-title {
+    color: #6f42c1;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    width: 100% ;
+}
+
+.form-control {
+    border-radius: 10px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-default {
+    background-color: #6f42c1;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    width: 100%;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.register-link {
+    margin-top: 20px;
+}
+
+.register-link a {
+    color: #ff5733;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
 /*========================= History.HTML =====================*/
 
 .history-page .header {

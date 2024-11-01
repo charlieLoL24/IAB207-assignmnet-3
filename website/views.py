@@ -1,17 +1,24 @@
-from flask import Blueprint, render_template, request
-from .forms import CreateEvent, CreateUser, CreateComment
+from flask import Blueprint, render_template, request, redirect, url_for
+from .forms import CreateEvent, CreateUser, CreateComment, LoginForm
 from .models import Event, Comment, User
+from flask_login import login_required, current_user
+
 
 main_bp = Blueprint('main', __name__)
+
+def check_login(current_user):
+
+    return current_user if current_user.is_authenticated else None
 
 
 @main_bp.route('/')
 def index():
+    user = check_login(current_user)
     events = Event.query.order_by(Event.id).all()
-    return render_template('index.html', events=events)
-
+    return render_template('index.html', events=events, user=user)
 
 @main_bp.route('/create-event')
+@login_required
 def createEvent():
     return render_template('create.html', form=CreateEvent)
 
@@ -36,22 +43,17 @@ def eventDetails():
                 "date_posted": comment.date_posted
             }
         )
-        
-    print(comment_dicts)
-        
+            
     return render_template('details.html', event=event, comments=comment_dicts)
 
 
 @main_bp.route('/profile')
+@login_required
 def profile():
     return render_template('profile.html')
 
 
 @main_bp.route('/history')
+@login_required
 def history():
     return render_template('history.html')
-
-
-@main_bp.route('/user')
-def user():
-    return render_template('user.html')
