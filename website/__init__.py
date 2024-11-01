@@ -42,3 +42,19 @@ def create_app():
     app.register_blueprint(auth.auth_bp)
     
     return app
+
+
+CATEGORIES = [
+   "Food Festival",
+   "Workshop",
+   "Cooking Class",
+   "Expo",
+   "Meetup"
+]
+
+STATUSES = [
+   "Open",
+   "Inactive",
+   "Sold Out",
+   "Cancelled"
+]

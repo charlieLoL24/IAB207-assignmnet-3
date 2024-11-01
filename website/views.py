@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from .forms import CreateEvent, CreateComment, LoginForm, CreateOrder, CreateUser  # Ensure all forms are imported
+from .forms import CreateEvent, CreateComment, LoginForm, CreateOrder  # Ensure all forms are imported
 from .models import Event, Comment, User, Order
 from flask_login import login_required, current_user
 from datetime import datetime
-from . import db
+from . import db, CATEGORIES
 
 main_bp = Blueprint('main', __name__)
 
@@ -14,9 +14,27 @@ def check_login(current_user):
 # Index route, displays all events
 @main_bp.route('/')
 def index():
+    category = request.args.get("category")
+    search_keywords = request.args.get("search_keywords")
+    
+    print(category)
+    print(search_keywords)
+    if category or search_keywords:
+        if category != "None" and search_keywords != "None":
+            print(Event.Title.contains(search_keywords))
+            events = Event.query.filter(Event.Title.contains(search_keywords)).filter_by(Category=category).order_by(Event.id).all()
+        elif category != "None":
+            events = Event.query.filter_by(Category=category).order_by(Event.id).all()
+        elif search_keywords != "None":
+            events = Event.query.filter(Event.Title.contains(search_keywords)).order_by(Event.id).all()
+        else:
+            events = Event.query.order_by(Event.id).all()
+    else:
+            events = Event.query.order_by(Event.id).all()
+    
     user = check_login(current_user)
-    events = Event.query.order_by(Event.id).all()
-    return render_template('index.html', events=events, user=user)
+    
+    return render_template('index.html', events=events, user=user, categories=CATEGORIES, category=category, search_keywords=search_keywords)
 
 # Route to create a new event (only accessible when logged in)
 @main_bp.route('/create-event')
@@ -24,10 +42,6 @@ def index():
 def createEvent():
     return render_template('create.html', form=CreateEvent)
 
-# Route to create a new user account (registration page)
-@main_bp.route('/create-user')
-def createUser():
-    return render_template('register.html', form=CreateUser)
 
 # Event details page, shows event information and allows order and comment submission
 @main_bp.route('/details', methods=['GET', 'POST'])
@@ -37,9 +51,12 @@ def eventDetails():
     order_form = CreateOrder()
     comment_form = CreateComment()
     user = check_login(current_user)
-    
+        
+    if event == None:
+        return redirect(url_for('main.notFound'))
+        
+        
     error = ""
-    
     # Handling ticket orders
     if order_form.validate_on_submit() and 'tickets' in request.form:
         tickets = order_form.tickets.data
@@ -162,3 +179,8 @@ def orderDetails():
     user = check_login(current_user)
     
     return render_template('order.html', order=order, event=event, user=user)
+
+
+@main_bp.route('/404')
+def notFound():
+    return render_template("404.html")

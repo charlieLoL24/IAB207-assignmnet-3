@@ -81,7 +81,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 0;
+    padding-bottom: 40px;
 }
 
 .category-item {
@@ -92,18 +92,10 @@ html {
     text-align: center;
 }
 
-.category-item img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #f8f9fa;
-    padding: 10px;
-}
-
 .category-item span {
     margin-top: 10px;
     font-weight: 600;
-    color: #6f42c1;
+    text-decoration: none;
 }
 
 /* event card */
@@ -277,6 +269,12 @@ html {
 
 .register-link a:hover {
     text-decoration: underline;
+}
+
+.category-title {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 10px;
 }
 
 /*========================= History.HTML =====================*/
