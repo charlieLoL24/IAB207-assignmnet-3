@@ -72,16 +72,7 @@
                 {% for error in form.tickets_available.errors %}
                     <span class="text-danger">{{ error }}</span>
                 {% endfor %}
-            </div>
-        
-            <div class="form-group mb-3">
-                {{ form.status.label(class="form-label") }}
-                {{ form.status(class="form-control", placeholder="Enter event status") }}
-                {% for error in form.status.errors %}
-                    <span class="text-danger">{{ error }}</span>
-                {% endfor %}
-            </div>
-        
+            </div>        
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Create Event</button>
             </div>

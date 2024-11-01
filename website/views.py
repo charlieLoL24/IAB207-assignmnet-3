@@ -56,7 +56,6 @@ def CreateEvent():
         venue = form.event_venue.data
         category = form.event_genre.data
         tickets_available = form.tickets_available.data
-        status = form.status.data
 
         # Handle image upload
         image_file = form.event_image.data
@@ -77,7 +76,7 @@ def CreateEvent():
             Venue=venue,
             Category=category,
             Tickets_available=tickets_available,
-            Status=status,
+            Status="Open",
             user_id=current_user.id  # assuming logged-in user
         )
 
@@ -97,11 +96,9 @@ def CreateEvent():
     return render_template('create.html', form=form)
 
 
-# Route to create a new event (only accessible when logged in)
-@main_bp.route('/create-event')
-@login_required
-def createEvent():
-    return render_template('create.html', form=CreateEvent)
+@main_bp.route('/create-user')
+def createUser():
+    return render_template('register.html', form=CreateUser)
 
 
 # Event details page, shows event information and allows order and comment submission
@@ -113,7 +110,9 @@ def eventDetails():
     comment_form = CreateComment()
     user = check_login(current_user)
     event_creator = User.query.filter_by(id=event.user_id).first()
-        
+    
+    img_location = "/".join(event.Image.split("\\")[2:4])
+
     if event == None:
         return redirect(url_for('main.notFound'))
         
@@ -163,7 +162,7 @@ def eventDetails():
         }
         for comment in comments
     ]
-    return render_template('details.html', event=event, user=user, order_form=order_form, comment_form=comment_form, comments=comment_dicts, event_creator=event_creator, status=event.Status)
+    return render_template('details.html', event=event, user=user, order_form=order_form, comment_form=comment_form, comments=comment_dicts, event_creator=event_creator, status=event.Status, img_location=img_location)
 
 # Profile page, accessible only when logged in, and passes user data to the template
 @main_bp.route('/profile')
@@ -203,7 +202,6 @@ def Comments():
     error = ""
     if comment_form.validate_on_submit():
         comment_text = comment_form.comment.data
-
         if comment_text is None:
             error = "Please enter a comment"
         elif not user:

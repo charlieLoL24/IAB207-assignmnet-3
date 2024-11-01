@@ -12,7 +12,6 @@
         <!-- Banner  -->
         <div class="banner-content">
             <h1>Find the Best Culinary Events</h1>
-            <button>Find Your Next Event</button>
         </div>
     </div>
 </div>
@@ -25,8 +24,8 @@
         
         {% for category in categories %}
             <div class="category-item">
-            <a class="btn-default" href="{{ url_for('main.index') }}?category={{ category }}&search_keywords={{ search_keywords }}">
-                <span>{{ category }}</span>
+            <a class="btn-default" href="{{ url_for('main.index') }}?category={{ category.0 }}&search_keywords={{ search_keywords }}">
+                <span>{{ category.1 }}</span>
             </a>
         </div>
         {% endfor %}

@@ -49,15 +49,14 @@ def create_app():
 
 
 CATEGORIES = [
-   "Food Festival",
-   "Workshop",
-   "Cooking Class",
-   "Expo",
-   "Meetup",
-   "Seminar",
-   "Networking",
-   "Conference",
-   "Webinar",
+   ('workshop', 'Workshop'),
+   ('seminar', 'Seminar'),
+   ('networking', 'Networking'),
+   ('conference', 'Conference'),
+   ('festival', 'Festival'),
+   ('concert', 'Concert'),
+   ('exhibition', 'Exhibition'),
+   ('webinar', 'Webinar')
 ]
 
 STATUSES = [
