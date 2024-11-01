@@ -39,9 +39,12 @@ def index():
             new_event.Status = "Inactive"
             db.session.add(new_event)
             
-    db.session.commit()        
+    db.session.commit()
     
-    return render_template('index.html', events=events, user=user, categories=CATEGORIES, category=category, search_keywords=search_keywords)
+    out_events = [{"event": event, "img_location": "/".join(event.Image.split("\\")[2:4])} for event in events]
+    
+    
+    return render_template('index.html', events=out_events, user=user, categories=CATEGORIES, category=category, search_keywords=search_keywords)
 
 
 @main_bp.route('/create-event', methods=['GET', 'POST'])
