@@ -1,67 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event History - Cook and Connect Events</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
-</head>
-
-
-<body>
-    <body class="history-page"></body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg header">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Cook and Connect Events</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="create-event">Create an Event</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="history">Event History</a>
-                    </li>
-                </ul>
-                <div class="d-flex">
-                    <a href="user" class="btn btn-outline-light me-2">Login</a>
-                    <a href="register" class="btn btn-outline-light">Register</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
+{% block content %}
+<div class="container my-5">
     <!-- Page Header -->
     <div class="bg-light-header text-center">
         <h1>Your Event History</h1>
         <p class="lead">View all the events you've attended or booked in the past.</p>
-        <!-- Find More Button -->
-        <a href="index.html" class="btn-find-more">Find More</a>
+        <a href="{{ url_for('index') }}" class="btn-find-more">Find More</a>
     </div>
 
-    <!-- Event History -->
-    <div class="container my-5">
+    <!-- Event History Section -->
+    {% if user_history %}
+        <div class="row g-4">
+            {% for event in user_history %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card p-3">
+                        <h3 class="card-title">{{ event.Title }}</h3>
+                        <p><strong>Date:</strong> {{ event.Date }}</p>
+                        <p><strong>Location:</strong> {{ event.Venue }}</p>
+                        <p><strong>Status:</strong> {{ event.Status }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
         <div class="no-events-message">
             No Past Events
         </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 Cook and Connect Events</p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+    {% endif %}
+</div>
+{% endblock %}

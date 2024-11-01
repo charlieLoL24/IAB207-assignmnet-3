@@ -1,48 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Cook and Connect Events</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
-</head>
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
 
-<body class="login-page">
-    <div class="header-banner">
-        <a href="/">Cook and Connect Events</a>
-    </div>
-
+{% block content %}
+<div class="login-page">
     <div class="login-container">
-        <h1>{{ heading }}</h1>
-        <form method="POST">
-            {{ form.csrf_token }}
-            
-            {% if form.username %}
-              <div class="form-group">
-                {{ form.username.label }}
-                {{ form.username(class="form-control") }}
-              </div>
-            {% endif %}
-            
-            {% if form.password %}
-              <div class="form-group">
-                {{ form.password.label }}
-                {{ form.password(class="form-control") }}
-              </div>
-            {% endif %}
-            
-            <button type="submit" class="btn btn-primary">Login</button>
-          </form>
-          <br>
-          <p>Don't have an account? <a href="register">Register here</a></p>
-      </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+        <h2 class="login-title">Login</h2>
+        <div class="col-md-6 form-group">
+            {{wtf.quick_form(form)}}
+            </div>
+        <div class="register-link">
+            <p>New user? <a href="register.html">Register here</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
