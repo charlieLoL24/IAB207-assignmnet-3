@@ -62,3 +62,10 @@ class CreateComment(FlaskForm):
     comment = StringField("Comment", validators=[InputRequired()])
     submit = SubmitField("Post")
 
+
+class CreateOrder(FlaskForm):
+    """
+        A form for creating orders
+    """
+    tickets = IntegerField("Ticket Quantity", validators=[InputRequired()])
+    submit = SubmitField("Post")

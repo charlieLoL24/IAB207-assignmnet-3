@@ -11,7 +11,6 @@ auth_bp = Blueprint('auth', __name__)
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
     register_form = RegisterForm()
-    print(register_form.username.data)
     if register_form.validate_on_submit():
         uname = register_form.username.data
         email = register_form.email.data
@@ -32,7 +31,9 @@ def register():
         db.session.commit()
         print("added data to database") 
         flash("Registered user successfully", "success")
-        return redirect(url_for('auth.register'))
+        
+        login_user(new_user )
+        return redirect(url_for('main.index'))
     else:
         print(register_form.errors)  # Display any validation errors
 
@@ -41,7 +42,7 @@ def register():
         for error in errors:
             flash(f"{field}: {error}", "error")
     
-    return render_template('register.html', form=register_form, heading='Register')
+    return render_template('register.html', form=register_form, heading='Register', user=None)
 
 
 
@@ -53,13 +54,12 @@ def login():
         user_name = form.user_name.data
         password = form.password.data
         u1 = User.query.filter_by(name=user_name).first()
-        print(user_name, password)
-            #if there is no user with that name
+        
+        #if there is no user with that name
         if u1 is None:
             error='Incorrect user name'
         #check the password - notice password hash function
-        # elif not check_password_hash(u1.password_hash, password): # takes the hash and password
-        elif not u1.password_hash == password:
+        elif not check_password_hash(u1.password_hash, password): # takes the hash and password
             error='Incorrect password'
         if error is None:
         #all good, set the login_user
@@ -69,7 +69,7 @@ def login():
             print(error)
             flash(error)
         #it comes here when it is a get method
-    return render_template('user.html', form=form, heading='Login')
+    return render_template('user.html', form=form, heading='Login', user=None)
 
 
 @auth_bp.route('/logout')
