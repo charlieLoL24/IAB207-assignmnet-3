@@ -17,32 +17,54 @@
     <body class="register-page" ></body>
     <!-- Top Banner -->
     <div class="header-banner">
-        <a href="index.html">Cook and Connect Events</a>
+        <a href="/">Cook and Connect Events</a>
     </div>
 
     <!-- Register Form -->
     <div class="register-container">
         <h2 class="register-title">Register</h2>
-        <form action="/register" method="POST">
-            <div class="mb-3">
-                <label for="username" class="form-label"></label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Choose a username" required>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label"></label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label"></label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Create a password" required>
-            </div>
-            <div class="mb-3">
-                <label for="confirm-password" class="form-label"></label>
-                <input type="password" class="form-control" id="confirm-password" name="confirm_password" placeholder="Confirm your password" required>
-            </div>
+        <form method="POST">
+            {{ form.csrf_token }}
+    
+            {% if form.username %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">{{ form.username.label }}</label>
+                    {{ form.username(class="form-control", id="username", placeholder="Choose a username") }}
+                </div>
+            {% endif %}
+    
+            {% if form.email %}
+                <div class="mb-3">
+                    <label for="email" class="form-label">{{ form.email.label }}</label>
+                    {{ form.email(class="form-control", id="email", placeholder="Enter your email") }}
+                </div>
+            {% endif %}
+    
+            {% if form.password %}
+                <div class="mb-3">
+                    <label for="password" class="form-label">{{ form.password.label }}</label>
+                    {{ form.password(class="form-control", id="password", placeholder="Create a password") }}
+                </div>
+            {% endif %}
+    
+            {% if form.confirm_password %}
+                <div class="mb-3">
+                    <label for="confirm_password" class="form-label">{{ form.confirm_password.label }}</label>
+                    {{ form.confirm_password(class="form-control", id="confirm-password", placeholder="Confirm your password") }}
+                </div>
+            {% endif %}
+    
+            <!-- {% if form.usertype %}
+                <div class="mb-3">
+                    <label for="usertype" class="form-label">{{ form.usertype.label }}</label>
+                    {{ form.usertype(class="form-control", id="usertype") }}
+                </div>
+            {% endif %} -->
+    
             <button type="submit" class="btn btn-register">Register</button>
+            
             <div class="login-link">
-                <p>Already have an account? <a href="user.html">Login here</a></p>
+                <p>Already have an account? <a href="login">Login here</a></p>
             </div>
         </form>
     </div>

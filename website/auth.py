@@ -8,6 +8,43 @@ from . import db
 # Create a blueprint - make sure all BPs have unique names
 auth_bp = Blueprint('auth', __name__)
 
+@auth_bp.route('/register', methods=['GET', 'POST'])
+def register():
+    register_form = RegisterForm()
+    print(register_form.username.data)
+    if register_form.validate_on_submit():
+        uname = register_form.username.data
+        email = register_form.email.data
+        pwd = register_form.password.data
+        # utype = register_form.usertype.data
+        # Check if username or email already exists
+        existing_user = User.query.filter_by(name=uname).first()
+        if existing_user:
+            flash("Username already taken", "error")
+            return render_template('register.html', form=register_form, heading='Register')
+
+        # Hash the password for security
+        pwd_hash = generate_password_hash(pwd)
+        
+        # Create a new User object and add it to the session
+        new_user = User(name=uname, emailid=email, password_hash=pwd_hash)
+        db.session.add(new_user)
+        db.session.commit()
+        print("added data to database") 
+        flash("Registered user successfully", "success")
+        return redirect(url_for('auth.register'))
+    else:
+        print(register_form.errors)  # Display any validation errors
+
+    # Flash validation errors, if any
+    for field, errors in register_form.errors.items():
+        for error in errors:
+            flash(f"{field}: {error}", "error")
+    
+    return render_template('register.html', form=register_form, heading='Register')
+
+
+
 @auth_bp.route('/login', methods = ['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -40,6 +77,5 @@ def logout():
   logout_user()
   return redirect(url_for('main.index'))
 
-@auth_bp.route('/register')
-def register():
-  return "wip"
+
+

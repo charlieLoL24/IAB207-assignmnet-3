@@ -1,4 +1,5 @@
 from . import db
+from sqlalchemy import Column, Integer, String
 from datetime import datetime
 from flask_login import UserMixin
 import enum
@@ -10,7 +11,7 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(100), index=True, unique=True, nullable=False)
     emailid = db.Column(db.String(100), index=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
-    
+    # usertype = Column(String(50))
     comments = db.relationship('Comment', backref='user')
     events = db.relationship('Event', secondary='comments', backref=db.backref('commented_users'))
 
